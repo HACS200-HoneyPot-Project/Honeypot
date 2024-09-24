@@ -1,0 +1,7 @@
+You have successfully connected to the SSH server. For assistance or support, contact your system administrator. Have a great day!
+
+Welcome to the SSH server. Unauthorized access is prohibited. For assistance or support, please contact your system administrator.
+
+WARNING: Unauthorized access is prohibited. This server is continuously monitored and all actions are logged by our security team.
+
+WARNING: Unauthorized access to the Department of Defense network is illegal. This server is monitored and all actions are logged.
