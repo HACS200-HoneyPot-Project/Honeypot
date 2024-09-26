@@ -1,19 +1,6 @@
 #!/bin/bash
 
-# Signaling the shutting off/recycling of script
-    # While loop to have script check every millisecond
-        while true; do {
-            int count = tail -f /path-for-mitm-log | grep -c "logout" #figure out the keyword for logging out
-
-            if (count > 0) {
-                # call recycling script
-            }
-
-            sleep 0.001 # - every millisecond (should we go smaller? how fast are commands run?)
-        }
-    # Using grep - if the last line of of the log says that there was a log out
-        # Call script to shut down and recycle the container
-
-
-
-    
+# Track MITM Logs, and identify when attacker logs in to start timer. 
+    # Figure out how to get start and end time accurately
+    # Figure out how to identify which banner is being run on the container
+        # Cat the bashrc file, and grep for the unique words of each banner message, and then based on that append the data to a file
