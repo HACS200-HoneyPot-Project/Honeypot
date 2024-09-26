@@ -9,7 +9,7 @@
                 # call recycling script
             }
 
-            sleep 0.001 - every millisecond (should we go smaller? how fast are commands run?)
+            sleep 0.001 # - every millisecond (should we go smaller? how fast are commands run?)
         }
     # Using grep - if the last line of of the log says that there was a log out
         # Call script to shut down and recycle the container
