@@ -6,7 +6,7 @@
             int count = tail -f /path-for-mitm-log | grep -c "logout" #figure out the keyword for logging out
 
             if (count > 0) {
-                
+                # call recycling script
             }
 
             sleep 0.001 - every millisecond (should we go smaller? how fast are commands run?)
