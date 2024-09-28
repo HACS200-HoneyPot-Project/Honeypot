@@ -8,13 +8,13 @@
 # Container name is passed in as the first argument
 container_name=$1
 
-# Path to the MITM log file for this container
+# Path to the MITM log file for this container - where is the mitm log stored?
 mitm_log="/path/to/mitm/logs/${container_name}_mitm.log"
 
 # Path to the container's .bashrc file to identify the banner
 bashrc_path="/home/user/.bashrc"
 
-# Paths to log files for each banner type - decide where we want to store the logs
+# Paths to log files for each banner type - need to decide where we want to store the logs
 control_log="/path/to/logs/control_banner_data.log"
 light_log="/path/to/logs/light_banner_data.log"
 medium_log="/path/to/logs/medium_banner_data.log"
