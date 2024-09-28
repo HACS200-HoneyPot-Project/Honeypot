@@ -28,7 +28,8 @@ while true; do
         # Record the start time
         start_time=$(date +"%Y-%m-%d %H:%M:%S")
         
-        # Identify the banner type by checking the .bashrc file
+        # Identify the banner type by checking the .bashrc file - we should add a comment when we edit the banner file with the type of 
+        # banner it is so this grepping is easier. or just grep a specific part of each banner, either way works
         if grep -q "Control Banner" $bashrc_path; then
             log_file=$control_log
         elif grep -q "Light Banner" $bashrc_path; then
