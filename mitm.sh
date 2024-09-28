@@ -40,7 +40,7 @@ while true; do
         fi
 
         # Wait for the logout event to log the end time
-        while ! tail -n 1 $mitm_log | grep -q "Logout"; do
+        while ! tail -n 1 $mitm_log | grep -q "Logout"; do # idk if logout is accurate need to test mitm logs and see
             sleep 0.1
         done
 
