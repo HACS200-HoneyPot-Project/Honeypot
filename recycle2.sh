@@ -37,10 +37,9 @@ sudo lxc-stop -n "$some_name"
 sudo lxc-destroy -n "$some_name"
 
 
-****************************************************************************
-TO DESTROY THE CONTAINER
-PARAMETERS ARE THE CONTAINERS NAME AND THE IP ASSOCIATED
-CONTAINER IP CAN GOTTEN FROM THIS SCRIPT I THINK
+# TO DESTROY THE CONTAINER
+# PARAMETERS ARE THE CONTAINERS NAME AND THE IP ASSOCIATED
+# CONTAINER IP CAN GOTTEN FROM THIS SCRIPT I THINK
 
 if [[ $# != 2 ]]; then
 	echo "usage: script container_name ip"
