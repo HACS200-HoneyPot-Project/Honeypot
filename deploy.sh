@@ -29,6 +29,8 @@ sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 -- destination 
 sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$2"
 
 banner_message=$(shuf -n 1 "$banner_file")
-# This is how chat gpt said to display the banner in the container 
+
+# We need to still figure out how the bash rc file works to display the message
 # Insert the banner into the container's /etc/motd (Message of the Day)
-echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
+# This is how chat gpt said to display the banner in the container below, not final 
+# echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
