@@ -30,6 +30,22 @@ sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destin
 
 banner_message=$(shuf -n 1 "$banner_file")
 
+# create MITM for each container and run in background
+sudo forever -l ~/"$container_name"_log start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 6459 --auto-access --auto-access-fixed 2 --debug
+
+# When we start everything up, we set up the tracking of mitm to see when attacker logs out.
+# Signaling the shutting off/recycling of script
+# While loop to have script check every millisecond
+while true; do {
+    int count = tail -f ~/"$container_name"_log | grep -c "logout" #figure out the keyword for logging out
+
+    if (count > 0) {
+        ~/recycle.sh "$container_name" "$container_ip"
+    }
+
+    sleep 0.001 # - every millisecond (should we go smaller? how fast are commands run?)
+}
+
 # We need to still figure out how the bash rc file works to display the message
 # Insert the banner into the container's /etc/motd (Message of the Day)
 # This is how chat gpt said to display the banner in the container below, not final 
