@@ -19,10 +19,10 @@ bashrc_path="/home/user/.bashrc"
 # light_log="/path/to/logs/light_banner_data.log"
 # medium_log="/path/to/logs/medium_banner_data.log"
 # high_log="/path/to/logs/high_banner_data.log"
-control_log=~"/control_banner_data.log"
-light_log=~"/light_banner_data.log"
-medium_log=~"/medium_banner_data.log"
-high_log=~"/high_banner_data.log"
+control_log=~"/control_banner_timestamps.log"
+light_log=~"/light_banner_timestamps.log"
+medium_log=~"/medium_banner_timestamps.log"
+high_log=~"/high_banner_timestamps.log"
 
 # Start monitoring
 while true; do
