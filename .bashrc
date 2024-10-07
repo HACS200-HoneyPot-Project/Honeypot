@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Randomize banner message upon login
+banner_file="$HOME/banners.txt"
+banner_message=$(shuf -n 1 "$banner_file")
+echo "$banner_message"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

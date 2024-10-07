@@ -30,6 +30,9 @@ sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destin
 
 banner_message=$(shuf -n 1 "$banner_file")
 
+# Insert the banner into the container's /etc/motd
+echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
+
 # create MITM for each container and run in background
 sudo forever -l ~/"$container_name"_log start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 6459 --auto-access --auto-access-fixed 2 --debug
 

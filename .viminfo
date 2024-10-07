@@ -11,8 +11,10 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
+:qa!
+|2,0,1728260128,,"qa!"
 :wq
-|2,0,1728258840,,"wq"
+|2,0,1728260120,,"wq"
 :q
 |2,0,1728258703,,"q"
 
@@ -27,28 +29,51 @@
 # Registers:
 
 # File marks:
-'0  27  32  ~/.ssh/authorized_keys
-|4,48,27,32,1728258840,"~/.ssh/authorized_keys"
-'1  1  0  ~/ansible-quickstart/hosts
-|4,49,1,0,1728258703,"~/ansible-quickstart/hosts"
-'2  1  9  ~/ansible-quickstart/hosts
-|4,50,1,9,1728258697,"~/ansible-quickstart/hosts"
+'0  1  3  /etc/motd
+|4,48,1,3,1728260128,"/etc/motd"
+'1  27  32  ~/.ssh/authorized_keys
+|4,49,27,32,1728258840,"~/.ssh/authorized_keys"
+'2  1  0  ~/ansible-quickstart/hosts
+|4,50,1,0,1728258703,"~/ansible-quickstart/hosts"
+'3  1  9  ~/ansible-quickstart/hosts
+|4,51,1,9,1728258697,"~/ansible-quickstart/hosts"
 
 # Jumplist (newest first):
+-'  1  3  /etc/motd
+|4,39,1,3,1728260128,"/etc/motd"
 -'  27  32  ~/.ssh/authorized_keys
 |4,39,27,32,1728258840,"~/.ssh/authorized_keys"
+-'  27  32  ~/.ssh/authorized_keys
+|4,39,27,32,1728258840,"~/.ssh/authorized_keys"
+-'  1  0  ~/.ssh/authorized_keys
+|4,39,1,0,1728258835,"~/.ssh/authorized_keys"
 -'  1  0  ~/.ssh/authorized_keys
 |4,39,1,0,1728258835,"~/.ssh/authorized_keys"
 -'  1  0  ~/ansible-quickstart/hosts
 |4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
 -'  1  0  ~/ansible-quickstart/hosts
 |4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
+-'  1  0  ~/ansible-quickstart/hosts
+|4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
+-'  1  0  ~/ansible-quickstart/hosts
+|4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
+-'  1  9  ~/ansible-quickstart/hosts
+|4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
+-'  1  9  ~/ansible-quickstart/hosts
+|4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
 -'  1  9  ~/ansible-quickstart/hosts
 |4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
 -'  1  9  ~/ansible-quickstart/hosts
 |4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
 
 # History of marks within files (newest to oldest):
+
+> /etc/motd
+	*	1728260124	0
+	"	1	3
+	^	1	4
+	.	1	3
+	+	1	3
 
 > ~/.ssh/authorized_keys
 	*	1728258839	0
