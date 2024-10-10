@@ -59,6 +59,12 @@ sudo lxc-attach -n "$container_name" -- bash -c "
 # SET UP MITM + NAT RULES FOR MITM
 sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 
+# MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
+# MAKE PORT UNIQUE GENERATED BASED OFF EXTERNAL
+sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 2 --debug
+
+sleep 5
+
 # NAT RULES FOR MITM
 sudo ip addr add "$external_ip"/16 brd + dev eth3
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
@@ -66,8 +72,7 @@ sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destin
 
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $2 --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:65000
 
-# MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
-sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 2 --debug
+
 
 # Setup SSH in the container
 sudo lxc-attach -n "$container_name" -- bash -c "
