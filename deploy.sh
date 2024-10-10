@@ -1,53 +1,117 @@
-# set up / redeploy the container with NAT rules
+#!/bin/bash
 
-# look at week 11, HW8 & W7 - scheduling from last semester for NAT rules
-# hw8 also has shuf command for randomizing banners
+# Set up / redeploy the container with NAT rules
 
-# take a container name & ip as the parameters
-# create a new container with that name and ip for that 
-# set up nat rules, postrouting when it shuts down
-
-# randomize banners
-
-# nat rules prerouting to strart it up again
-
-if [[ $# != 2 ]]; then
-	echo "Usage: $0 container_name external_ip"
-	exit 1
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 container_name external_ip"
+    exit 1
 fi
 
 container_name=$1
 external_ip=$2
-container_ip=$(sudo lxc-info -n "$container_name" -iH)
+
+if [[ ! ( -d MITM_Logs ) ]]; then
+    mkdir MITM_Logs
+fi
+
+sudo iptables -t nat -F
+sudo sysctl -p
+
+# CREATE/STOP CONTAINER
+count=$(sudo lxc-ls | grep -c "$container_name")
+if [[ $count -ne 0 ]]
+then
+    # IF IT DOES EXIST, STOP IT AND DESTROY IT
+    sudo lxc-stop -n "$container_name"
+    sudo lxc-destroy -n "$container_name"
+fi
+
+# IF IT DOESNT EXIST, CREATE IT
+sudo lxc-create -n "$container_name" -t download -- -d ubuntu -r focal -a amd64
+sudo lxc-start -n "$container_name"
+
+sudo ip addr add "$external_ip"/16 brd + dev eth0
+
+# Get the internal IP of the container with detailed debugging
+echo "Retrieving container IP for: $container_name"
+sleep 7
+# Try extracting the IP
+container_ip=$(sudo lxc-info -n "$container_name" | grep "IP" | cut -d " " -f14)
+echo "Container IP: '$container_ip'"  # Display what was extracted
+# Check if IP was retrieved successfully
+if [[ -z $container_ip ]]; then
+    echo "Error: Could not retrieve container IP. Ensure the container is running."
+    exit 1
+fi
+echo "Successfully retrieved Container IP: $container_ip"
+
+sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
+sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
+
+# File containing banner messages
 banner_file="banners.txt"
 
-sudo lxc-create -n "$1" -t download -- -d ubuntu -r focal -a amd64
-sudo lxc-start -n "$1"
+# SETUP SSH IN THE CONTAINER
+sudo lxc-attach -n "$container_name" -- bash -c "
+    apt-get update &&
+    apt-get install -y openssh-server &&
+    systemctl start ssh &&
+    echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config &&
+    echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config &&
+    echo 'root:pass' | chpasswd &&  # Set root password to 'pass'
+    systemctl restart ssh
+    sudo iptables -t nat -F
+"
 
-sudo ip addr add "$1"/16 brd + dev eth0
-sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 -- destination "$2" --jump DNAT --to-destination "$container_ip"
-sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$2"
+# SET UP MITM + NAT RULES FOR MITM
+sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 
+# MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
+sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 2 --debug
+
+sleep 5
+
+# NAT RULES FOR MITM
+sudo ip addr add "$external_ip"/16 brd + dev eth1
+sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
+sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
+
+sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $2 --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:65000
+
+sudo lxc-attach -n container_name -- adduser user
+
+# Setup SSH in the container
+sudo lxc-attach -n "$container_name" -- bash -c "
+    echo 'root:pass' | chpasswd &&  # Set root password to 'pass'
+    
+    # Clear banner files
+    echo '' > /etc/issue &&
+    echo '' > /etc/issue.net &&
+    echo '' > /etc/motd &&
+    rm -f /etc/update-motd.d/*
+"
+
+# Randomize the banner message
 banner_message=$(shuf -n 1 "$banner_file")
 
 # Insert the banner into the container's /etc/motd
 echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
 
-# create MITM for each container and run in background
-sudo forever -l ~/"$container_name"_log start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 6459 --auto-access --auto-access-fixed 2 --debug
+sudo iptables -t nat -F
+# While loop to check for logout keyword
+# while true; do
+#     count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "logout") # Check for the logout keyword
 
-# When we start everything up, we set up the tracking of mitm to see when attacker logs out.
-# Signaling the shutting off/recycling of script
-# While loop to have script check every millisecond
-while true; do {
-    int count = tail -f ~/"$container_name"_log | grep -c "logout" #figure out the keyword for logging out
+#     if [[ $count -gt 0 ]]; then
+#         echo "Detected logout event. Executing recycle script."
+#         ~/recycle2.sh "$container_name" "$external_ip"
+#     else
+#         echo "No logout events detected."
+#     fi
 
-    if (count > 0) {
-        ~/recycle.sh "$container_name" "$container_ip"
-    }
+#     sleep 1 # Check every second to avoid high CPU usage
+# done
 
-    sleep 0.001 # - every millisecond (should we go smaller? how fast are commands run?)
-}
 
 # We need to still figure out how the bash rc file works to display the message
 # Insert the banner into the container's /etc/motd (Message of the Day)

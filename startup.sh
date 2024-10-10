@@ -13,6 +13,6 @@ sudo sysctl -w net.ip4.conf.all.route_localnet=1
 npm install -g forever
 
 #call deploy.sh script for each container
-while (i <= 4){
+for i in {1..4}; do
     ~/deploy.sh "container$i" "ip$i"
-} 
+done

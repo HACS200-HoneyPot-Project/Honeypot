@@ -11,12 +11,12 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
+:wq
+|2,0,1728507904,,"wq"
+:q
+|2,0,1728263043,,"q"
 :qa!
 |2,0,1728260128,,"qa!"
-:wq
-|2,0,1728260120,,"wq"
-:q
-|2,0,1728258703,,"q"
 
 # Search String History (newest to oldest):
 
@@ -29,44 +29,242 @@
 # Registers:
 
 # File marks:
-'0  1  3  /etc/motd
-|4,48,1,3,1728260128,"/etc/motd"
-'1  27  32  ~/.ssh/authorized_keys
-|4,49,27,32,1728258840,"~/.ssh/authorized_keys"
-'2  1  0  ~/ansible-quickstart/hosts
-|4,50,1,0,1728258703,"~/ansible-quickstart/hosts"
-'3  1  9  ~/ansible-quickstart/hosts
-|4,51,1,9,1728258697,"~/ansible-quickstart/hosts"
+'0  81  0  ~/deploy.sh
+|4,48,81,0,1728507904,"~/deploy.sh"
+'1  37  0  ~/deploy.sh
+|4,49,37,0,1728507825,"~/deploy.sh"
+'2  37  0  ~/deploy.sh
+|4,50,37,0,1728507825,"~/deploy.sh"
+'3  58  0  ~/deploy.sh
+|4,51,58,0,1728507678,"~/deploy.sh"
+'4  58  0  ~/deploy.sh
+|4,52,58,0,1728507678,"~/deploy.sh"
+'5  58  0  ~/deploy.sh
+|4,53,58,0,1728507678,"~/deploy.sh"
+'6  58  0  ~/deploy.sh
+|4,54,58,0,1728507678,"~/deploy.sh"
+'7  58  0  ~/deploy.sh
+|4,55,58,0,1728507618,"~/deploy.sh"
+'8  58  0  ~/deploy.sh
+|4,56,58,0,1728507618,"~/deploy.sh"
+'9  58  0  ~/deploy.sh
+|4,57,58,0,1728507618,"~/deploy.sh"
 
 # Jumplist (newest first):
--'  1  3  /etc/motd
-|4,39,1,3,1728260128,"/etc/motd"
--'  27  32  ~/.ssh/authorized_keys
-|4,39,27,32,1728258840,"~/.ssh/authorized_keys"
--'  27  32  ~/.ssh/authorized_keys
-|4,39,27,32,1728258840,"~/.ssh/authorized_keys"
--'  1  0  ~/.ssh/authorized_keys
-|4,39,1,0,1728258835,"~/.ssh/authorized_keys"
--'  1  0  ~/.ssh/authorized_keys
-|4,39,1,0,1728258835,"~/.ssh/authorized_keys"
--'  1  0  ~/ansible-quickstart/hosts
-|4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
--'  1  0  ~/ansible-quickstart/hosts
-|4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
--'  1  0  ~/ansible-quickstart/hosts
-|4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
--'  1  0  ~/ansible-quickstart/hosts
-|4,39,1,0,1728258703,"~/ansible-quickstart/hosts"
--'  1  9  ~/ansible-quickstart/hosts
-|4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
--'  1  9  ~/ansible-quickstart/hosts
-|4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
--'  1  9  ~/ansible-quickstart/hosts
-|4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
--'  1  9  ~/ansible-quickstart/hosts
-|4,39,1,9,1728258697,"~/ansible-quickstart/hosts"
+-'  81  0  ~/deploy.sh
+|4,39,81,0,1728507904,"~/deploy.sh"
+-'  1  0  ~/deploy.sh
+|4,39,1,0,1728507896,"~/deploy.sh"
+-'  37  0  ~/deploy.sh
+|4,39,37,0,1728507825,"~/deploy.sh"
+-'  37  0  ~/deploy.sh
+|4,39,37,0,1728507825,"~/deploy.sh"
+-'  1  0  ~/deploy.sh
+|4,39,1,0,1728507819,"~/deploy.sh"
+-'  58  0  ~/deploy.sh
+|4,39,58,0,1728507678,"~/deploy.sh"
+-'  58  0  ~/deploy.sh
+|4,39,58,0,1728507678,"~/deploy.sh"
+-'  58  0  ~/deploy.sh
+|4,39,58,0,1728507678,"~/deploy.sh"
+-'  1  0  ~/deploy.sh
+|4,39,1,0,1728507668,"~/deploy.sh"
+-'  58  0  ~/deploy.sh
+|4,39,58,0,1728507618,"~/deploy.sh"
+-'  1  0  ~/deploy.sh
+|4,39,1,0,1728507607,"~/deploy.sh"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  10  0  /usr/bin/bash
+|4,39,10,0,1728263043,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  /usr/bin/bash
+|4,39,1,0,1728263040,"/usr/bin/bash"
+-'  1  0  ~/deploy.sh
+|4,39,1,0,1728262910,"~/deploy.sh"
+-'  1  0  ~/deploy.sh
+|4,39,1,0,1728262910,"~/deploy.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
+-'  29  0  ~/recycle2.sh
+|4,39,29,0,1728262750,"~/recycle2.sh"
 
 # History of marks within files (newest to oldest):
+
+> ~/deploy.sh
+	*	1728507904	0
+	"	81	0
+
+> /usr/bin/bash
+	*	1728263043	0
+	"	10	0
+
+> ~/recycle2.sh
+	*	1728262701	0
+	"	29	0
 
 > /etc/motd
 	*	1728260124	0

@@ -8,21 +8,21 @@
 # Container name is passed in as the first argument
 container_name=$1
 
-# Path to the MITM log file for this container - where is the mitm log stored?
-mitm_log=~"/${container_name}_log"
+# Path to the MITM log file for this container
+mitm_log="~/${container_name}_log"
 
 # Path to the container's .bashrc file to identify the banner
-bashrc_path="/home/user/.bashrc"
+bashrc_path="~/.bashrc"
 
 # Paths to log files for each banner type - need to decide where we want to store the logs
 # control_log="/path/to/logs/control_banner_data.log"
 # light_log="/path/to/logs/light_banner_data.log"
 # medium_log="/path/to/logs/medium_banner_data.log"
 # high_log="/path/to/logs/high_banner_data.log"
-control_log=~"/control_banner_timestamps.log"
-light_log=~"/light_banner_timestamps.log"
-medium_log=~"/medium_banner_timestamps.log"
-high_log=~"/high_banner_timestamps.log"
+control_log="~/control_banner_timestamps.log"
+light_log="~/light_banner_timestamps.log"
+medium_log="~/medium_banner_timestamps.log"
+high_log="~/high_banner_timestamps.log"
 
 # Start monitoring
 while true; do
@@ -37,7 +37,7 @@ while true; do
             log_file=$control_log
         elif grep -q "Light Banner" $bashrc_path; then
             log_file=$light_log
-        elif grep -q "Medium Banner" $bashrc_path; thenl
+        elif grep -q "Medium Banner" $bashrc_path; then
             log_file=$medium_log
         else
             log_file=$high_log
