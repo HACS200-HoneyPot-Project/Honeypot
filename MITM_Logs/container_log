@@ -1862,3 +1862,379 @@ sysctl -w net.ipv4.conf.all.route_localnet=1
 2024-10-09 20:17:15.195 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
 2024-10-09 20:17:15.195 - [Error] Another MITM instance or another program is already listening on this port
 {"level":"error","message":"Forever detected script exited with code: 1"}
+(node:577375) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.185',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:14:49.060 - [Info] MITM Version: 2
+2024-10-10 14:14:49.061 - [Info] Auto Access Enabled: true
+2024-10-10 14:14:49.062 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:14:49.071 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:14:49.071 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+2024-10-10 14:14:54.925 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 14:14:54.946 - [Debug] [Connection] Attacker closed the connection
+(node:579468) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.44',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:16:16.363 - [Info] MITM Version: 2
+2024-10-10 14:16:16.364 - [Info] Auto Access Enabled: true
+2024-10-10 14:16:16.365 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:16:16.374 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:16:16.374 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+(node:582003) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.243',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:20:27.884 - [Info] MITM Version: 2
+2024-10-10 14:20:27.885 - [Info] Auto Access Enabled: true
+2024-10-10 14:20:27.885 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:20:27.893 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:20:27.893 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+2024-10-10 14:20:36.457 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 14:20:36.514 - [Debug] [Connection] Attacker closed the connection
+(node:584317) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.38',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:27:22.296 - [Info] MITM Version: 2
+2024-10-10 14:27:22.297 - [Info] Auto Access Enabled: true
+2024-10-10 14:27:22.298 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:27:22.305 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:27:22.305 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+(node:586317) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.241',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:33:49.368 - [Info] MITM Version: 2
+2024-10-10 14:33:49.370 - [Info] Auto Access Enabled: true
+2024-10-10 14:33:49.370 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:33:49.380 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:33:49.380 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+(node:588133) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.155',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:35:19.851 - [Info] MITM Version: 2
+2024-10-10 14:35:19.853 - [Info] Auto Access Enabled: true
+2024-10-10 14:35:19.853 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:35:19.860 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:35:19.861 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+(node:589832) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.135',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:35:59.230 - [Info] MITM Version: 2
+2024-10-10 14:35:59.232 - [Info] Auto Access Enabled: true
+2024-10-10 14:35:59.232 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:35:59.240 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:35:59.240 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+(node:591793) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.149',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:40:35.409 - [Info] MITM Version: 2
+2024-10-10 14:40:35.410 - [Info] Auto Access Enabled: true
+2024-10-10 14:40:35.411 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:40:35.419 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:40:35.419 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+(node:593519) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.129',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:41:43.958 - [Info] MITM Version: 2
+2024-10-10 14:41:43.959 - [Info] Auto Access Enabled: true
+2024-10-10 14:41:43.960 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:41:43.970 - [Debug] listen EADDRINUSE: address already in use 127.0.0.1:65000
+2024-10-10 14:41:43.970 - [Error] Another MITM instance or another program is already listening on this port
+{"level":"error","message":"Forever detected script exited with code: 1"}
+2024-10-10 14:41:54.112 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-10 14:41:54.148 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:42:01.300 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-10 14:42:01.334 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:42:09.062 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-10 14:42:09.095 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:42:12.379 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-10 14:42:12.421 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:42:19.678 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:42:19.701 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:42:21.610 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:42:21.662 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:42:22.549 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:42:22.575 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:42:23.376 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:42:23.405 - [Debug] [Connection] Attacker closed the connection
+(node:1844) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.102',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+Error: ENOENT: no such file or directory, open '/var/lib/lxc/container/rootfs/etc/ssh/ssh_host_ecdsa_key'
+    at Object.openSync (node:fs:596:3)
+    at Object.readFileSync (node:fs:464:35)
+    at readKeys (/home/student/MITM/server/keys.js:19:18)
+    at readCTKeys (/home/student/MITM/server/keys.js:29:15)
+    at Object.loadKeys (/home/student/MITM/server/keys.js:48:12)
+    at Object.<anonymous> (/home/student/MITM/server/index.js:160:29)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12) {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/var/lib/lxc/container/rootfs/etc/ssh/ssh_host_ecdsa_key'
+}
+[ERROR] Could not read the keys from the container! Is the container mounted/running and is openssh-server installed?
+{"level":"error","message":"Forever detected script exited with code: 1"}
+(node:3027) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.39',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-10 14:57:51.285 - [Info] MITM Version: 2
+2024-10-10 14:57:51.297 - [Info] Auto Access Enabled: true
+2024-10-10 14:57:51.297 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-10 14:57:51.308 - [Info] SSH man-in-the-middle server for 10.0.3.39 listening on 127.0.0.1:65000
+2024-10-10 14:58:35.571 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:58:35.638 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:58:46.955 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:58:46.974 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:58:55.888 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-10 14:58:55.909 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:59:02.473 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:59:02.495 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:59:03.923 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:59:03.943 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:59:04.919 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:59:04.940 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 14:59:41.804 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 14:59:41.824 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 15:01:28.092 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 15:01:28.148 - [Debug] [Connection] Attacker closed the connection

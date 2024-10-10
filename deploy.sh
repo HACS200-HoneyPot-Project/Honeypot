@@ -14,9 +14,6 @@ if [[ ! ( -d MITM_Logs ) ]]; then
     mkdir MITM_Logs
 fi
 
-sudo iptables -t nat -F
-sudo sysctl -p
-
 # CREATE/STOP CONTAINER
 count=$(sudo lxc-ls | grep -c "$container_name")
 if [[ $count -ne 0 ]]
@@ -30,13 +27,14 @@ fi
 sudo lxc-create -n "$container_name" -t download -- -d ubuntu -r focal -a amd64
 sudo lxc-start -n "$container_name"
 
-sudo ip addr add "$external_ip"/16 brd + dev eth0
+sudo ip addr add "$external_ip"/16 brd + dev eth3
 
 # Get the internal IP of the container with detailed debugging
 echo "Retrieving container IP for: $container_name"
 sleep 7
 # Try extracting the IP
 container_ip=$(sudo lxc-info -n "$container_name" | grep "IP" | cut -d " " -f14)
+
 echo "Container IP: '$container_ip'"  # Display what was extracted
 # Check if IP was retrieved successfully
 if [[ -z $container_ip ]]; then
@@ -44,10 +42,6 @@ if [[ -z $container_ip ]]; then
     exit 1
 fi
 echo "Successfully retrieved Container IP: $container_ip"
-
-sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
-sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
-
 # File containing banner messages
 banner_file="banners.txt"
 
@@ -60,25 +54,20 @@ sudo lxc-attach -n "$container_name" -- bash -c "
     echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config &&
     echo 'root:pass' | chpasswd &&  # Set root password to 'pass'
     systemctl restart ssh
-    sudo iptables -t nat -F
 "
 
 # SET UP MITM + NAT RULES FOR MITM
 sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 
-# MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
-sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 2 --debug
-
-sleep 5
-
 # NAT RULES FOR MITM
-sudo ip addr add "$external_ip"/16 brd + dev eth1
+sudo ip addr add "$external_ip"/16 brd + dev eth3
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
 sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
 
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $2 --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:65000
 
-sudo lxc-attach -n container_name -- adduser user
+# MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
+sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 2 --debug
 
 # Setup SSH in the container
 sudo lxc-attach -n "$container_name" -- bash -c "
@@ -97,7 +86,6 @@ banner_message=$(shuf -n 1 "$banner_file")
 # Insert the banner into the container's /etc/motd
 echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
 
-sudo iptables -t nat -F
 # While loop to check for logout keyword
 # while true; do
 #     count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "logout") # Check for the logout keyword
