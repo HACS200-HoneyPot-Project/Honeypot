@@ -2238,3 +2238,235 @@ sysctl -w net.ipv4.conf.all.route_localnet=1
 2024-10-10 14:59:41.824 - [Debug] [Connection] Attacker closed the connection
 2024-10-10 15:01:28.092 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
 2024-10-10 15:01:28.148 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 15:04:45.287 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 15:04:45.308 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 15:04:57.952 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.0
+2024-10-10 15:04:57.981 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 16:17:09.608 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 16:17:09.626 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 16:17:12.920 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 16:17:12.938 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 16:17:15.742 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 16:17:15.761 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 17:06:59.943 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-ssh2js1.13.0
+2024-10-10 17:07:00.101 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'none'
+2024-10-10 17:07:00.101 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-10 17:07:00.171 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-10 17:07:00.172 - [Debug] [Auto Access] Attacker: 192.168.11.8, Threshold: 2, Attempts: 1
+2024-10-10 17:07:00.172 - [Debug] [Auth] Attacker authentication error: Not yet compromised
+2024-10-10 17:07:00.172 - [Debug] [Auth] Attacker: 192.168.11.8 has so far made 1 attempts. Remaining: 5 attempts
+2024-10-10 17:07:00.231 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 17:07:03.151 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-10 17:07:03.191 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 17:07:08.399 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-10 17:07:08.432 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 17:08:35.135 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-ssh2js1.13.0
+2024-10-10 17:08:35.414 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'none'
+2024-10-10 17:08:35.414 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-10 17:08:35.613 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-10 17:08:35.613 - [Debug] [Auto Access] Attacker: 192.168.11.8, Threshold: 2, Attempts: 2
+2024-10-10 17:08:35.613 - [Debug] [Auto Access] Compromising the honeypot
+2024-10-10 17:08:35.613 - [Debug] [Auto Access] Adding the following credentials: 'student:phishnchips'
+2024-10-10 17:08:35.790 - [Debug] [Auto Access] Auto-access is now disabled for the remainder of this MITM server instance
+2024-10-10 17:08:35.800 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-10 17:08:35.800 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.39
+2024-10-10 17:08:35.846 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-10 17:08:36.070 - [Debug] [Connection] Attacker closed connection
+2024-10-10 17:08:36.074 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-10 17:08:36.075 - [Debug] [LXC] Container's OpenSSH server closed connection
+2024-10-10 17:09:07.895 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-ssh2js1.13.0
+2024-10-10 17:09:08.030 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'none'
+2024-10-10 17:09:08.031 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-10 17:09:08.089 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-10 17:09:08.089 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-10 17:09:08.090 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.39
+2024-10-10 17:09:08.129 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-10 17:09:08.370 - [Debug] [Connection] Attacker closed connection
+2024-10-10 17:09:08.373 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-10 17:09:08.374 - [Debug] [LXC] Container's OpenSSH server closed connection
+2024-10-10 17:37:50.780 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 17:37:50.823 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 17:43:15.451 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 17:43:15.473 - [Debug] [Connection] Attacker closed the connection
+2024-10-10 17:43:35.329 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_9.7
+2024-10-10 17:43:35.351 - [Debug] [Connection] Attacker closed the connection
+(node:14304) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.130',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-11 12:59:49.465 - [Info] MITM Version: 2
+2024-10-11 12:59:49.468 - [Info] Auto Access Enabled: true
+2024-10-11 12:59:49.469 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-11 12:59:49.478 - [Info] SSH man-in-the-middle server for 10.0.3.130 listening on 127.0.0.1:65000
+2024-10-11 13:01:43.021 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-11 13:01:43.072 - [Debug] [Connection] Attacker closed the connection
+(node:2833) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.16',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-11 13:06:49.619 - [Info] MITM Version: 2
+2024-10-11 13:06:49.623 - [Info] Auto Access Enabled: true
+2024-10-11 13:06:49.623 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-11 13:06:49.632 - [Info] SSH man-in-the-middle server for 10.0.3.16 listening on 127.0.0.1:65000
+2024-10-11 13:07:10.376 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-11 13:07:10.420 - [Debug] [Connection] Attacker closed the connection
+(node:2849) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '127.0.0.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container',
+  containerIp: '10.0.3.100',
+  mitmPort: 65000,
+  autoAccessFixed: 2
+}
+[WARNING] Your MITM server is listening on the localhost IP address, you will need to set the following sysctl option for iptables to port forward to a localhost IP:
+sysctl -w net.ipv4.conf.all.route_localnet=1
+2024-10-11 13:12:42.745 - [Info] MITM Version: 2
+2024-10-11 13:12:42.749 - [Info] Auto Access Enabled: true
+2024-10-11 13:12:42.749 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-11 13:12:42.760 - [Info] SSH man-in-the-middle server for 10.0.3.100 listening on 127.0.0.1:65000
+2024-10-11 13:12:54.957 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-11 13:12:55.090 - [Debug] [Connection] Attacker closed the connection
+2024-10-11 13:17:02.415 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-11 13:17:05.835 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'none'
+2024-10-11 13:17:05.835 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-11 13:17:08.535 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-11 13:17:08.536 - [Debug] [Auto Access] Attacker: 192.168.11.8, Threshold: 2, Attempts: 1
+2024-10-11 13:17:08.536 - [Debug] [Auth] Attacker authentication error: Not yet compromised
+2024-10-11 13:17:08.536 - [Debug] [Auth] Attacker: 192.168.11.8 has so far made 1 attempts. Remaining: 5 attempts
+2024-10-11 13:17:12.124 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-11 13:17:12.124 - [Debug] [Auto Access] Attacker: 192.168.11.8, Threshold: 2, Attempts: 2
+2024-10-11 13:17:12.124 - [Debug] [Auto Access] Compromising the honeypot
+2024-10-11 13:17:12.125 - [Debug] [Auto Access] Adding the following credentials: 'student:phishnchips'
+2024-10-11 13:17:12.252 - [Debug] [Auto Access] Auto-access is now disabled for the remainder of this MITM server instance
+2024-10-11 13:17:12.255 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-11 13:17:12.256 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.100
+2024-10-11 13:17:12.305 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-11 13:17:12.444 - [Debug] [SHELL] Opened shell for attacker
+2024-10-11 13:17:12.446 - [Debug] [LXC Streams] New Stream | Total Streams: 1
+2024-10-11 13:18:22.046 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-11 13:18:22.151 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'none'
+2024-10-11 13:18:22.151 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-11 13:18:25.337 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-11 13:18:25.337 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-11 13:18:25.338 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.100
+2024-10-11 13:18:25.374 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-11 13:18:25.501 - [Debug] [SHELL] Opened shell for attacker
+2024-10-11 13:18:25.501 - [Debug] [LXC Streams] New Stream | Total Streams: 2
+2024-10-11 13:18:33.929 - [Debug] [Connection] Attacker closed connection
+2024-10-11 13:18:33.937 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-11 13:18:33.938 - [Debug] [LXC] Container's OpenSSH server closed connection
+2024-10-11 13:18:33.939 - [Debug] [LXC Streams] Removed Stream | Total streams: 1
+2024-10-11 13:18:33.939 - [Debug] [SHELL] Honeypot ended shell
+2024-10-11 13:18:36.330 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-11 13:18:36.447 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'none'
+2024-10-11 13:18:36.447 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-11 13:18:38.343 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-11 13:18:38.343 - [Debug] [Auth] Attacker authentication error: Invalid credentials - Password Authentication Failure
+2024-10-11 13:18:38.344 - [Debug] [Auth] Attacker: 192.168.11.8 has so far made 1 attempts. Remaining: 5 attempts
+2024-10-11 13:18:39.876 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-11 13:18:39.876 - [Debug] [Auth] Attacker authentication error: Invalid credentials - Password Authentication Failure
+2024-10-11 13:18:39.877 - [Debug] [Auth] Attacker: 192.168.11.8 has so far made 2 attempts. Remaining: 4 attempts
+2024-10-11 13:18:40.483 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-11 13:18:40.483 - [Debug] [Auth] Attacker authentication error: Invalid credentials - Password Authentication Failure
+2024-10-11 13:18:40.484 - [Debug] [Auth] Attacker: 192.168.11.8 has so far made 3 attempts. Remaining: 3 attempts
+2024-10-11 13:18:40.564 - [Debug] [Connection] Attacker closed the connection
+2024-10-11 13:18:45.929 - [Debug] [Connection] Attacker connected: 192.168.11.8 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-11 13:18:46.040 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'none'
+2024-10-11 13:18:46.040 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-11 13:18:48.553 - [Debug] [Auth] Attacker 192.168.11.8 trying to authenticate with 'password'
+2024-10-11 13:18:48.554 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-11 13:18:48.554 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.100
+2024-10-11 13:18:48.590 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-11 13:18:48.713 - [Debug] [SHELL] Opened shell for attacker
+2024-10-11 13:18:48.714 - [Debug] [LXC Streams] New Stream | Total Streams: 2
+2024-10-11 13:19:09.157 - [Debug] [SHELL] Attacker Keystroke: l
+2024-10-11 13:19:09.250 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-11 13:19:09.415 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-11 13:19:09.417 - [Debug] [SHELL] line from reader: ls
+2024-10-11 13:19:09.417 - [Debug] [SHELL] Keystroke buffer: 108,115,13
+2024-10-11 13:19:10.116 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-11 13:19:10.241 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-11 13:19:10.624 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-11 13:19:10.625 - [Debug] [SHELL] line from reader: cd
+2024-10-11 13:19:10.625 - [Debug] [SHELL] Keystroke buffer: 99,100,13
+2024-10-11 13:19:12.353 - [Debug] [SHELL] Attacker Keystroke: w
+2024-10-11 13:19:12.469 - [Debug] [SHELL] Attacker Keystroke: h
+2024-10-11 13:19:12.533 - [Debug] [SHELL] Attacker Keystroke: o
+2024-10-11 13:19:12.685 - [Debug] [SHELL] Attacker Keystroke: a
+2024-10-11 13:19:12.769 - [Debug] [SHELL] Attacker Keystroke: m
+2024-10-11 13:19:12.939 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-11 13:19:13.167 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-11 13:19:13.168 - [Debug] [SHELL] line from reader: whoami
+2024-10-11 13:19:13.168 - [Debug] [SHELL] Keystroke buffer: 119,104,111,97,109,105,13
+2024-10-11 13:20:09.777 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-11 13:20:09.955 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-11 13:20:10.481 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-11 13:20:10.688 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-11 13:20:10.806 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-11 13:21:45.999 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-11 13:21:46.278 - [Debug] [SHELL] Attacker Keystroke: x
+2024-10-11 13:21:46.414 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-11 13:21:46.525 - [Debug] [SHELL] Attacker Keystroke: t
+2024-10-11 13:21:46.707 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-11 13:21:46.708 - [Debug] [SHELL] line from reader: exit
+2024-10-11 13:21:46.708 - [Debug] [SHELL] Keystroke buffer: 101,120,105,116,13
+2024-10-11 13:21:46.711 - [Debug] [LXC Streams] Removed Stream | Total streams: 1
+2024-10-11 13:21:46.711 - [Debug] [SHELL] Honeypot ended shell
+2024-10-11 13:21:46.779 - [Debug] [SHELL] Attacker ended the shell
+2024-10-11 13:21:46.779 - [Debug] [Connection] Attacker closed connection
+2024-10-11 13:21:46.784 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-11 13:21:46.784 - [Debug] [LXC] Container's OpenSSH server closed connection

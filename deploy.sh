@@ -27,8 +27,6 @@ fi
 sudo lxc-create -n "$container_name" -t download -- -d ubuntu -r focal -a amd64
 sudo lxc-start -n "$container_name"
 
-sudo ip addr add "$external_ip"/16 brd + dev eth3
-
 # Get the internal IP of the container with detailed debugging
 echo "Retrieving container IP for: $container_name"
 sleep 7
@@ -49,11 +47,7 @@ banner_file="banners.txt"
 sudo lxc-attach -n "$container_name" -- bash -c "
     apt-get update &&
     apt-get install -y openssh-server &&
-    systemctl start ssh &&
-    echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config &&
-    echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config &&
-    echo 'root:pass' | chpasswd &&  # Set root password to 'pass'
-    systemctl restart ssh
+    systemctl start ssh
 "
 
 # SET UP MITM + NAT RULES FOR MITM
@@ -74,10 +68,8 @@ sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $
 
 
 
-# Setup SSH in the container
-sudo lxc-attach -n "$container_name" -- bash -c "
-    echo 'root:pass' | chpasswd &&  # Set root password to 'pass'
-    
+# Put the banner in the container
+sudo lxc-attach -n "$container_name" -- bash -c "   
     # Clear banner files
     echo '' > /etc/issue &&
     echo '' > /etc/issue.net &&
