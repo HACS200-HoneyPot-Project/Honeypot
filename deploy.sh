@@ -77,6 +77,15 @@ sudo lxc-attach -n "$container_name" -- bash -c "
     rm -f /etc/update-motd.d/*
 "
 
+# Make a directory and file inside the container that contains the honey 
+sudo lxc-attach -n "$container_name" -- bash -c "   
+    mkdir -p /home/student_data 
+    touch /home/student_data/records
+"
+
+#command to move honey into the container directory 
+scp /home/student/honey.csv student@"$container_ip":/home/student_data/records
+
 # Randomize the banner message
 banner_message=$(shuf -n 1 "$banner_file")
 
