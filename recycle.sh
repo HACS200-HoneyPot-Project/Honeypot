@@ -1,26 +1,12 @@
 #!/bin/bash
 
-# takes 1. container name 2. container ip
-if [ $# -ne 2 ]
-then
-    echo "Please enter 1. container name and 2. container ip"
+# Set up / redeploy the container with NAT rules
+
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 container_name external_ip"
     exit 1
 fi
 
-ctr_name=$1
-ctr_ip=$2
+sudo ~/deploy.sh "$container_name" "$external_ip"
 
-# set up / redeploy the container with NAT rules
-    # maybe we have some snapshot or something to have the saved configuration
-
-# shut down the container when attacker leaves
-    # find mitm logs
-    # grep out log out
-
-# randomize banner message
-
-rand=$(( 1 + $RANDOM % 4 )) # use this number to edit the banner message (from banners.txt?)
-
-# redeploy (NAT rules)
-
-# data collection - time & commands
+echo "redeploying $container_name..."

@@ -10,7 +10,10 @@ fi
 container_name=$1
 external_ip=$2
 
-if [[ ! ( -d MITM_Logs ) ]]; then
+sudo rm -r /run/lxc/lock/var
+chmod +x ~/recycle.sh
+
+if [[ ! -d MITM_Logs ]]; then
     mkdir MITM_Logs
 fi
 
@@ -22,16 +25,19 @@ then
     sudo lxc-stop -n "$container_name"
     sudo lxc-destroy -n "$container_name"
 fi
-
 # IF IT DOESNT EXIST, CREATE IT
 sudo lxc-create -n "$container_name" -t download -- -d ubuntu -r focal -a amd64
 sudo lxc-start -n "$container_name"
 
 # Get the internal IP of the container with detailed debugging
 echo "Retrieving container IP for: $container_name"
-sleep 7
-# Try extracting the IP
-container_ip=$(sudo lxc-info -n "$container_name" | grep "IP" | cut -d " " -f14)
+# Wait until the container is running
+for i in {1..10}; do
+    if sudo lxc-info -n "$container_name" | grep -q "RUNNING"; then
+        break
+    fi
+    sleep 2
+done
 
 echo "Container IP: '$container_ip'"  # Display what was extracted
 # Check if IP was retrieved successfully
@@ -55,9 +61,11 @@ sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 
 # MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
 # MAKE PORT UNIQUE GENERATED BASED OFF EXTERNAL
-sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 2 --debug
+sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 1 --debug
 
 sleep 5
+
+count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check number of logout events
 
 # NAT RULES FOR MITM
 sudo ip addr add "$external_ip"/16 brd + dev eth3
@@ -65,8 +73,6 @@ sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "
 sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
 
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:65000
-
-
 
 # Put the banner in the container
 sudo lxc-attach -n "$container_name" -- bash -c "   
@@ -84,7 +90,11 @@ sudo lxc-attach -n "$container_name" -- bash -c "
 "
 
 #command to move honey into the container directory 
-scp /home/student/honey.csv student@"$external_ip":/home/student_data/records
+# Push the honey.csv file to the container
+sudo lxc file push ~/honey.csv "$container_name"/home/student_data/records
+
+# Change the file ownership to root and allow all users to access it
+sudo lxc-attach -n "$container_name" -- bash -c "chown root:root /home/student_data/records && chmod 777 /home/student_data/records"
 
 # Randomize the banner message
 banner_message=$(shuf -n 1 "$banner_file")
@@ -92,22 +102,23 @@ banner_message=$(shuf -n 1 "$banner_file")
 # Insert the banner into the container's /etc/motd
 echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
 
+sudo lxc-attach -n "$container_name" -- bash -c "echo '$banner_message' > /etc/motd"
+
 # While loop to check for logout keyword
-# while true; do
-#     count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "logout") # Check for the logout keyword
+monitor_logout_events() {
+    while true; do
+        new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
 
-#     if [[ $count -gt 0 ]]; then
-#         echo "Detected logout event. Executing recycle script."
-#         ~/recycle2.sh "$container_name" "$external_ip"
-#     else
-#         echo "No logout events detected."
-#     fi
+        if [[ $new_count -gt $count ]]; then
+            echo "Detected logout event. Executing recycle script."
+            ~/recycle.sh "$container_name" "$external_ip"
+        else
+            echo "No logout events detected."
+        fi
 
-#     sleep 1 # Check every second to avoid high CPU usage
-# done
+        sleep 1 # Check every second to avoid high CPU usage
+    done
+}
 
+monitor_logout_events &
 
-# We need to still figure out how the bash rc file works to display the message
-# Insert the banner into the container's /etc/motd (Message of the Day)
-# This is how chat gpt said to display the banner in the container below, not final 
-# echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
