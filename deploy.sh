@@ -11,7 +11,7 @@ container_name=$1
 external_ip=$2
 
 sudo rm -r /run/lxc/lock/var
-chmod +x ~/recycle.sh
+chmod u+x ~/recycle.sh
 
 if [[ ! -d MITM_Logs ]]; then
     mkdir MITM_Logs
@@ -31,13 +31,11 @@ sudo lxc-start -n "$container_name"
 
 # Get the internal IP of the container with detailed debugging
 echo "Retrieving container IP for: $container_name"
-# Wait until the container is running
-for i in {1..10}; do
-    if sudo lxc-info -n "$container_name" | grep -q "RUNNING"; then
-        break
-    fi
-    sleep 2
-done
+
+sleep 7
+
+container_ip=$(sudo lxc-info -n "$container_name" | grep "IP" | cut -d " " -f14)
+
 
 echo "Container IP: '$container_ip'"  # Display what was extracted
 # Check if IP was retrieved successfully
@@ -85,9 +83,10 @@ sudo lxc-attach -n "$container_name" -- bash -c "
 
 # Make a directory and file inside the container that contains the honey 
 sudo lxc-attach -n "$container_name" -- bash -c "   
-    mkdir -p /home/student_data 
-    touch /home/student_data/records
+    mkdir -p /home/student_data
 "
+
+cp /home/student/honey.csv /var/lib/lxc/"$container_name"/rootfs/home/student_data/student_records
 
 #command to move honey into the container directory 
 # Push the honey.csv file to the container

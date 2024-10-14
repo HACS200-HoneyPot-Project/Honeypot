@@ -12,6 +12,8 @@ sudo sysctl -w net.ip4.conf.all.route_localnet=1
 # install for background
 npm install -g forever
 
+~/firewall_rules.sh
+
 #call deploy.sh script for each container
 for i in {1..4}; do
     ~/deploy.sh "container$i" "ip$i"
