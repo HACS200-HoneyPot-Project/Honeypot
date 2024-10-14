@@ -84,7 +84,7 @@ sudo lxc-attach -n "$container_name" -- bash -c "
 "
 
 #command to move honey into the container directory 
-scp /home/student/honey.csv student@"$container_ip":/home/student_data/records
+scp /home/student/honey.csv student@"$external_ip":/home/student_data/records
 
 # Randomize the banner message
 banner_message=$(shuf -n 1 "$banner_file")
