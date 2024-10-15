@@ -7,6 +7,8 @@ if [[ $# -ne 2 ]]; then
     exit 1
 fi
 
-sudo ~/deploy.sh "$container_name" "$external_ip"
+sleep 5
 
-echo "redeploying $container_name..."
+echo "redeploying $1..."
+
+sudo ./deploy.sh "$1" "$2"
