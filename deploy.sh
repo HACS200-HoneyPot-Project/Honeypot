@@ -7,15 +7,21 @@ if [[ $# -ne 2 ]]; then
     exit 1
 fi
 
-container_name=$1
-external_ip=$2
+container_name="$1"
+external_ip="$2"
+count=0
 
-sudo rm -r /run/lxc/lock/var
+# sudo rm -r /run/lxc/lock/var
 chmod u+x ~/recycle.sh
 
-if [[ ! -d MITM_Logs ]]; then
-    mkdir MITM_Logs
+sudo mkdir -p /run/lxc/lock
+sudo chmod 755 /run/lxc/lock
+
+if [ ! -d "~/MITM_Logs" ]; then
+  mkdir ~/MITM_Logs
 fi
+
+log_file="~/MITM_Logs/${container_name}_log"
 
 # CREATE/STOP CONTAINER
 count=$(sudo lxc-ls | grep -c "$container_name")
@@ -63,17 +69,15 @@ sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "
 
 sleep 5
 
-count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check number of logout events
-
 # NAT RULES FOR MITM
 sudo ip addr add "$external_ip"/16 brd + dev eth3
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
 sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
 
-sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:65000
+sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:65000
 
 # Put the banner in the container
-sudo lxc-attach -n "$container_name" -- bash -c "   
+sudo lxc-attach -n "$container_name" -- bash -c "
     # Clear banner files
     echo '' > /etc/issue &&
     echo '' > /etc/issue.net &&
@@ -81,16 +85,16 @@ sudo lxc-attach -n "$container_name" -- bash -c "
     rm -f /etc/update-motd.d/*
 "
 
-# Make a directory and file inside the container that contains the honey 
-sudo lxc-attach -n "$container_name" -- bash -c "   
-    mkdir -p /home/student_data
+# Make a directory and file inside the container that contains the honey
+sudo lxc-attach -n "$container_name" -- bash -c "
+    mkdir -p ~/student_data
 "
 
-cp /home/student/honey.csv /var/lib/lxc/"$container_name"/rootfs/home/student_data/student_records
+sudo cp ~/honey.csv /var/lib/lxc/"$container_name"/rootfs/home/student_data
 
-#command to move honey into the container directory 
+#command to move honey into the container directory
 # Push the honey.csv file to the container
-sudo lxc file push ~/honey.csv "$container_name"/home/student_data/records
+sudo lxc file push ~/honey.csv "$container_name"/home/student_data/
 
 # Change the file ownership to root and allow all users to access it
 sudo lxc-attach -n "$container_name" -- bash -c "chown root:root /home/student_data/records && chmod 777 /home/student_data/records"
@@ -103,21 +107,77 @@ echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd
 
 sudo lxc-attach -n "$container_name" -- bash -c "echo '$banner_message' > /etc/motd"
 
+logout_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check number of logout events
+
 # While loop to check for logout keyword
 monitor_logout_events() {
     while true; do
         new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
+        login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
 
-        if [[ $new_count -gt $count ]]; then
+        if [[ $new_count -gt $logout_count ]]; then
+            # ps aux
             echo "Detected logout event. Executing recycle script."
-            ~/recycle.sh "$container_name" "$external_ip"
-        else
-            echo "No logout events detected."
+            # PID=$(pgrep -f "${container_name}_log")
+            INDEX=$(sudo forever list | grep "~/MITM_Logs/container_log" | awk '{print $1}' | sed 's/\[//g' | sed 's/\]//g')
+            sudo forever stop --index $INDEX
+
+            sudo forever stop --script ~/MITM/mitm.js --args "-n container -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 1 --debug" --logfile ~/MITM_Logs/"${container_name}_log"
+            sudo ~/recycle.sh "$container_name" "$external_ip"
+
+            # Get the correct forever ID for the process associated with the container
+            FOREVER_ID=$(forever list | grep "${container_name}_log" | awk '{print $3}')
+
+            # Stop the process using the forever ID
+            if [[ ! -z "$FOREVER_ID" ]]; then
+                echo "Stopping forever process with ID: $FOREVER_ID"
+                sudo forever stop "$FOREVER_ID"
+            else
+                echo "No matching forever process found for $container_name"
+            fi
+            kill $BGPID
+        elif [[ $login_count -gt $logout_count ]]; then # if an attacker is inside the container 
+            kick=0
+            # check if inactive
+            last_update_time=$(sudo cat ~/MITM_Logs/"${container_name}_log" | awk 'END{print}' | cut -d " " -f -2)
+            last_update_ms=$(date -d $last_update_time +'%s%3N')
+            time_since=$(( $(date +'%s%3N') - $last_update_ms))
+            if [[ $time_since -gt 180000 ]]; then # if longer than 10 mins, kill the processes
+                kick=1
+            fi
+
+            # check total time in container
+            login_time=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep "Attacker authenticated and is inside container" | awk 'END{print}' | cut -d " " -f -2)
+            login_ms=$(date -d $login_time +'%s%3N')
+            time_since=$(( $(date +'%s%3N') - $login_ms))
+            if [[ $time_since -gt 900000 ]]; then
+                kick=1
+            fi
+
+            if [[ $kick -eq 1 ]]; then
+                INDEX=$(sudo forever list | grep "~/MITM_Logs/container_log" | awk '{print $1}' | sed 's/\[//g' | sed 's/\]//g')
+                sudo forever stop --index $INDEX
+
+                sudo forever stop --script ~/MITM/mitm.js --args "-n container -i "$container_ip" -p 65000 --auto-access --auto-access-fixed 1 --debug" --logfile ~/MITM_Logs/"${container_name}_log"
+                sudo ~/recycle.sh "$container_name" "$external_ip"
+
+                # Get the correct forever ID for the process associated with the container
+                FOREVER_ID=$(forever list | grep "${container_name}_log" | awk '{print $3}')
+
+                # Stop the process using the forever ID
+                if [[ ! -z "$FOREVER_ID" ]]; then
+                    echo "Stopping forever process with ID: $FOREVER_ID"
+                    sudo forever stop "$FOREVER_ID"
+                else
+                    echo "No matching forever process found for $container_name"
+                fi
+                kill $BGPID
+            fi
         fi
 
-        sleep 1 # Check every second to avoid high CPU usage
+        sleep 2 # Check every other second to avoid high CPU usage
     done
 }
 
 monitor_logout_events &
-
+BGPID=$!
