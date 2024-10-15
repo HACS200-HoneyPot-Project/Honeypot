@@ -10,10 +10,7 @@ fi
 container_name="$1"
 external_ip="$2"
 count=0
-<<<<<<< HEAD
 port=$(shuf -n 1 50000-65000)
-=======
->>>>>>> 322d489aaededf27822e82f7655e141a8f62a515
 
 # sudo rm -r /run/lxc/lock/var
 chmod u+x ~/recycle.sh
