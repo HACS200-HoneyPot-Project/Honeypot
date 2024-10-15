@@ -15,11 +15,12 @@ port=$(shuf -i 50000-65000 -n 1)
 # sudo rm -r /run/lxc/lock/var
 chmod u+x ~/recycle.sh
 
-sudo mkdir -p /run/lxc/lock
-sudo chmod 755 /run/lxc/lock
+# sudo mkdir -p /run/lxc/lock
+# sudo chmod 755 /run/lxc/lock
 
-if [ ! -d ~/MITM_Logs ]; then
-  mkdir ~/MITM_Logs
+if [[ ! ( -d MITM_Logs ) ]]; then
+    mkdir ~/MITM_Logs
+    chmod 755 ~/MITM_Logs
 fi
 
 log_file="~/MITM_Logs/${container_name}_log"
@@ -64,6 +65,15 @@ sudo lxc-attach -n "$container_name" -- bash -c "
 # SET UP MITM + NAT RULES FOR MITM
 sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 
+sudo chmod 777 /root/MITM/mitm.js
+
+echo 
+echo "Finding log file"
+echo "Currently listing all files in home directory: $(sudo ls -l ~)"
+echo "Listing what is in MITM_Logs:"
+sudo ls -l ~/MITM_Logs
+sudo ls -l ~/MITM/mitm.js
+
 # MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
 # MAKE PORT UNIQUE GENERATED BASED OFF EXTERNAL
 sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port" --auto-access --auto-access-fixed 1 --debug
@@ -98,7 +108,7 @@ sudo cp ~/honey.csv /var/lib/lxc/"$container_name"/rootfs/home/student_data
 sudo lxc file push ~/honey.csv "$container_name"/home/student_data/
 
 # Change the file ownership to root and allow all users to access it
-sudo lxc-attach -n "$container_name" -- bash -c "chown root:root /home/student_data/records && chmod 777 /home/student_data/records"
+sudo lxc-attach -n "$container_name" -- bash -c "chown root:root ~/student_data/records && chmod 777 ~/student_data/records"
 
 # Randomize the banner message
 banner_message=$(shuf -n 1 "$banner_file")
@@ -133,8 +143,9 @@ monitor_logout_events() {
             else
                 echo "No matching forever process found for $container_name"
             fi
-            sudo ./recycle.sh "$container_name" "$external_ip" "$container_ip" "$port"
-            kill $BGPID
+            echo
+            echo "Starting recycle script"
+            ./recycle.sh "$container_name" "$external_ip" "$container_ip" "$port"
             break
          elif [[ $login_count -gt $log_count ]]; then # if an attacker is inside the container 
               # check if inactive
@@ -158,5 +169,4 @@ monitor_logout_events() {
     done
 }
 
-monitor_logout_events &
-BGPID=$!
+monitor_logout_events

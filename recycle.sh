@@ -14,7 +14,8 @@ port="$4"
 
 sleep 5
 
-echo "redeploying $1..."
+echo
+echo "deleting $1 NAT rules..."
 
 sudo iptables --table nat --delete PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
 
@@ -22,6 +23,6 @@ sudo iptables --table nat --delete POSTROUTING --source "$container_ip" --destin
 
 sudo iptables --table nat --delete PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port"
 
-
-
-sudo ./deploy.sh "$1" "$2"
+echo
+echo "redeploying $1"
+./deploy.sh "$1" "$2"
