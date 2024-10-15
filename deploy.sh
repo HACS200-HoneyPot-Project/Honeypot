@@ -119,12 +119,6 @@ monitor_logout_events() {
         if [[ $new_count -gt $log_count ]]; then
             # ps aux
             echo "Detected logout event. Executing recycle script."
-            # PID=$(pgrep -f "${container_name}_log")
-            INDEX=$(sudo forever list | grep "~/MITM_Logs/container_log" | awk '{print $1}' | sed 's/\[//g' | sed 's/\]//g')
-            sudo forever stop --index $INDEX
-
-            sudo forever stop --script ~/MITM/mitm.js --args "-n container -i "$container_ip" -p "$port" --auto-access --auto-access-fixed 1 --debug" --logfile ~/MITM_Logs/"${container_name}_log"
-            sudo ~/recycle.sh "$container_name" "$external_ip"
 
             # Get the correct forever ID for the process associated with the container
             FOREVER_ID=$(forever list | grep "${container_name}_log" | awk '{print $3}')
@@ -137,23 +131,23 @@ monitor_logout_events() {
                 echo "No matching forever process found for $container_name"
             fi
             kill $BGPID
-        elif [[ $login_count -gt $log_count ]]; then # if an attacker is inside the container 
-            # check if inactive
-            last_update_time=$(sudo tail -n 1 ~/MITM_Logs/"${container_name}_log" | cut -d " " -f -2)
-            last_update_ms=$(date -d $last_update_time +'%s%3N')
-            time_since=$(( $(date +'%s%3N') - $last_update_ms))
-            if [[ $time_since -gt 180000 ]]; then # if longer than 3 mins, kill the processes
-                new_count=$(($new_count + 1))
-            fi
+     #   elif [[ $login_count -gt $log_count ]]; then # if an attacker is inside the container 
+     #        # check if inactive
+       #      last_update_time=$(sudo tail -n 1 ~/MITM_Logs/"${container_name}_log" | cut -d " " -f -2)
+         #    last_update_ms=$(date -d "$last_update_time" +'%s%3N')
+           #  time_since=$(( $(date +'%s%3N') - $last_update_ms ))
+       #      if [[ $time_since -gt 180000 ]]; then # if longer than 3 mins, kill the processes
+       #          new_count=$(($new_count + 1))
+       #      fi
 
-            # check total time in container
-            login_time=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep "Attacker authenticated and is inside container" | awk 'END{print}' | cut -d " " -f -2)
-            login_ms=$(date -d $login_time +'%s%3N')
-            time_since=$(( $(date +'%s%3N') - $login_ms))
-            if [[ $time_since -gt 900000 ]]; then
-                new_count=$(($new_count + 1))
-            fi
-        fi
+       #      # check total time in container
+       #      login_time=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep "Attacker authenticated and is inside container" | awk 'END{print}' | cut -d " " -f -2)
+       #      login_ms=$(date -d $login_time +'%s%3N')
+       #      time_since=$(( $(date +'%s%3N') - $login_ms))
+       #      if [[ $time_since -gt 900000 ]]; then
+        #         new_count=$(($new_count + 1))
+       #      fi
+         fi
 
         sleep 2 # Check every other second to avoid high CPU usage
     done
