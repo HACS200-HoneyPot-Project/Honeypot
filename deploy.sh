@@ -119,6 +119,8 @@ echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd
 sudo lxc-attach -n "$container_name" -- bash -c "echo '$banner_message' > /etc/motd"
 
 log_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check number of logout events
+login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check number of login events
+
 kick=false
 
 # While loop to check for logout keyword
