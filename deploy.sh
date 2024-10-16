@@ -130,6 +130,14 @@ monitor_logout_events() {
             # ps aux
             echo "Detected logout event. Executing recycle script."
 
+            # ensure other attackers cannot connect
+            # sudo iptables --table nat --check OUTPUT --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DROP
+            # if [[ $? -eq 1 ]]; then
+            #   attacker_ip=$(sudo cat ~/MITM_Logs/"${container_name}_log | grep "Attacker connected:" | awk 'END{print}' | cut -d " " -f 8)
+            #   sudo iptables --table nat --insert OUTPUT --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DROP
+            #   sudo iptables --table nat --insert OUTPUT --source $attacker_ip --destination $external_ip --protocol tcp --dport 22 --jump ALLOW
+            # fi
+
             # Get the correct forever ID for the process associated with the container
             FOREVER_ID=$(sudo forever list | grep "${container_name}_log" | awk '{print $2}' | cut -c 2)
             echo "Forever ID: $FOREVER_ID"
@@ -156,6 +164,8 @@ monitor_logout_events() {
                 new_count=$(($new_count + 1))
             fi
 
+            echo "$time_since ms since last command"
+
             # check total time in container
             login_time=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep "Attacker authenticated and is inside container" | awk 'END{print}' | cut -d " " -f -2)
             login_ms=$(date -d "$login_time" +'%s%3N')
@@ -163,6 +173,8 @@ monitor_logout_events() {
             if [[ $time_since -gt 900000 ]]; then
                 new_count=$(($new_count + 1))
             fi
+
+            echo "$time_since ms since login"
          fi
 
         sleep 2 # Check every other second to avoid high CPU usage
