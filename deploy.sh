@@ -127,9 +127,9 @@ kick=false
 monitor_logout_events() {
     while true; do
         new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
-        login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
+        new_login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
 
-        if [[ $new_count -gt $log_count ]] | $kick; then
+        if [[ $new_count -gt $log_count ]] || $kick; then
             # ps aux
             echo "Detected logout event. Executing recycle script."
 
@@ -158,8 +158,8 @@ monitor_logout_events() {
             echo "Starting recycle script"
             ./recycle.sh "$container_name" "$external_ip" "$container_ip" "$port"
             break
-         elif [[ $login_count -gt $log_count ]]; then # if an attacker is inside the container 
-              # check if inactive
+        elif [[ $new_login_count -gt $login_count ]]; then # if an attacker is inside the container 
+            # check if inactive
             last_update_time=$(sudo tail -n 1 ~/MITM_Logs/"${container_name}_log" | cut -d " " -f -2)
             last_update_ms=$(date -d "$last_update_time" +'%s%3N')
             time_since=$(( $(date +'%s%3N') - "$last_update_ms" ))
