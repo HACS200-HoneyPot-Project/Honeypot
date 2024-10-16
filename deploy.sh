@@ -129,7 +129,7 @@ monitor_logout_events() {
         new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
         login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
 
-        if [[ $new_count -gt $log_count ]] | kick; then
+        if [[ $new_count -gt $log_count ]] | $kick; then
             # ps aux
             echo "Detected logout event. Executing recycle script."
 
