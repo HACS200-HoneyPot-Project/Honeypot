@@ -119,6 +119,7 @@ echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd
 sudo lxc-attach -n "$container_name" -- bash -c "echo '$banner_message' > /etc/motd"
 
 log_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check number of logout events
+kick=false
 
 # While loop to check for logout keyword
 monitor_logout_events() {
@@ -126,7 +127,7 @@ monitor_logout_events() {
         new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
         login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
 
-        if [[ $new_count -gt $log_count ]]; then
+        if [[ $new_count -gt $log_count ]] | kick; then
             # ps aux
             echo "Detected logout event. Executing recycle script."
 
@@ -161,7 +162,7 @@ monitor_logout_events() {
             last_update_ms=$(date -d "$last_update_time" +'%s%3N')
             time_since=$(( $(date +'%s%3N') - "$last_update_ms" ))
             if [[ $time_since -gt 180000 ]]; then # if longer than 3 mins, kill the processes
-                new_count=$(($new_count + 1))
+                kick=true
             fi
 
             echo "$time_since ms since last command"
@@ -171,7 +172,7 @@ monitor_logout_events() {
             login_ms=$(date -d "$login_time" +'%s%3N')
             time_since=$(( $(date +'%s%3N') - "$login_ms"))
             if [[ $time_since -gt 900000 ]]; then
-                new_count=$(($new_count + 1))
+                kick=true
             fi
 
             echo "$time_since ms since login"
