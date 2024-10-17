@@ -10,7 +10,12 @@ fi
 container_name="$1"
 external_ip="$2"
 count=0
-port=$(shuf -i 50000-65000 -n 1)
+# port=$(shuf -i 50000-65000 -n 1)
+port1=$(shuf -i 50000-53000 -n 1)
+port2=$(shuf -i 53001-56000 -n 1)
+port3=$(shuf -i 56001-59000 -n 1)
+port4=$(shuf -i 59001-62000 -n 1)
+port5=$(shuf -i 62001-65000 -n 1)
 
 # sudo rm -r /run/lxc/lock/var
 chmod u+x ~/recycle.sh
@@ -22,8 +27,6 @@ if [[ ! ( -d MITM_Logs ) ]]; then
     mkdir ~/MITM_Logs
     chmod 755 ~/MITM_Logs
 fi
-
-log_file="~/MITM_Logs/${container_name}_log"
 
 # CREATE/STOP CONTAINER
 count=$(sudo lxc-ls | grep -c "$container_name")
@@ -67,7 +70,7 @@ sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 
 sudo chmod 777 /root/MITM/mitm.js
 
-echo 
+echo ""
 echo "Finding log file"
 echo "Currently listing all files in home directory: $(sudo ls -l ~)"
 echo "Listing what is in MITM_Logs:"
@@ -76,7 +79,17 @@ sudo ls -l ~/MITM/mitm.js
 
 # MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
 # MAKE PORT UNIQUE GENERATED BASED OFF EXTERNAL
-sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port" --auto-access --auto-access-fixed 1 --debug
+if [[ $container_name == "container1" ]]; then
+  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port1" --auto-access --auto-access-fixed 1 --debug
+elif [[ $container_name == "container2" ]]; then
+  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port2" --auto-access --auto-access-fixed 1 --debug
+elif [[ $container_name == "container3" ]]; then
+  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port3" --auto-access --auto-access-fixed 1 --debug
+elif [[ $container_name == "container4" ]]; then
+  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port4" --auto-access --auto-access-fixed 1 --debug
+else
+  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port5" --auto-access --auto-access-fixed 1 --debug
+fi
 
 sleep 5
 
@@ -85,7 +98,17 @@ sudo ip addr add "$external_ip"/16 brd + dev eth0
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
 sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
 
-sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port"
+if [[ $container_name == "container1" ]]; then
+  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port1"
+elif [[ $container_name == "container2" ]]; then
+  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port2"
+elif [[ $container_name == "container3" ]]; then
+  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port3"
+elif [[ $container_name == "container4" ]]; then
+  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port4"
+else
+  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port5"
+fi
 
 # Put the banner in the container
 sudo lxc-attach -n "$container_name" -- bash -c "
@@ -123,7 +146,11 @@ login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker a
 
 kick=false
 
+attacker_left=false
+attacker_inside=false
+
 # While loop to check for logout keyword
+
 monitor_logout_events() {
     while true; do
         new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
@@ -131,15 +158,11 @@ monitor_logout_events() {
 
         if [[ $new_count -gt $log_count ]] || $kick; then
             # ps aux
+            attacker_left=true
             echo "Detected logout event. Executing recycle script."
 
-            # ensure other attackers cannot connect
-            # sudo iptables --table nat --check OUTPUT --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DROP
-            # if [[ $? -eq 1 ]]; then
-            #   attacker_ip=$(sudo cat ~/MITM_Logs/"${container_name}_log | grep "Attacker connected:" | awk 'END{print}' | cut -d " " -f 8)
-            #   sudo iptables --table nat --insert OUTPUT --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DROP
-            #   sudo iptables --table nat --insert OUTPUT --source $attacker_ip --destination $external_ip --protocol tcp --dport 22 --jump ALLOW
-            # fi
+            sudo iptables --delete INPUT --source 0.0.0.0/0 --destination "$container_ip" --protocol tcp --dport 22 --jump DROP
+            sudo iptables --delete INPUT --source "$attacker_ip" --destination "$container_ip" --protocol tcp --dport 22 --jump ACCEPT
 
             # Get the correct forever ID for the process associated with the container
             FOREVER_ID=$(sudo forever list | grep "${container_name}_log" | awk '{print $2}' | cut -c 2)
@@ -158,7 +181,23 @@ monitor_logout_events() {
             echo "Starting recycle script"
             ./recycle.sh "$container_name" "$external_ip" "$container_ip" "$port"
             break
-        elif [[ $new_login_count -gt $login_count ]]; then # if an attacker is inside the container 
+         elif [[ $new_login_count -gt $login_count ]]; then # if an attacker is inside the container
+            attacker_inside=true
+            attacker_username=$(sudo grep 'Accepted' /var/log/auth.log | grep "$attacker_ip" | awk '{print $9}' | tail -n 1)
+    
+            if [[ -n "$attacker_username" ]]; then
+              # Disable attacker's password
+              sudo passwd -l "$attacker_username"
+            fi
+            #echo "student":"phishnchips" | sudo chpasswd
+            # ensure other attackers cannot connect
+            sudo iptables --check INPUT --source 0.0.0.0/0 --destination $container_ip --protocol tcp --dport 22 --jump DROP
+            if [[ $? -eq 1 ]]; then
+              attacker_ip=$(sudo cat ~/MITM_Logs/"${container_name}"_log | grep "Attacker connected:" | awk 'END{print}' | cut -d " " -f 8)
+              sudo iptables --insert INPUT --source 0.0.0.0/0 --destination "$container_ip" --protocol tcp --dport 22 --jump DROP
+              sudo iptables --insert INPUT --source "$attacker_ip" --destination "$container_ip" --protocol tcp --dport 22 --jump ACCEPT
+            fi
+
             # check if inactive
             last_update_time=$(sudo tail -n 1 ~/MITM_Logs/"${container_name}_log" | cut -d " " -f -2)
             last_update_ms=$(date -d "$last_update_time" +'%s%3N')
@@ -167,7 +206,7 @@ monitor_logout_events() {
                 kick=true
             fi
 
-            echo "$time_since ms since last command"
+            echo "last command: $time_since ms ago"
 
             # check total time in container
             login_time=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep "Attacker authenticated and is inside container" | awk 'END{print}' | cut -d " " -f -2)
@@ -177,11 +216,67 @@ monitor_logout_events() {
                 kick=true
             fi
 
-            echo "$time_since ms since login"
+            echo "login: $time_since ms ago:"
          fi
 
         sleep 2 # Check every other second to avoid high CPU usage
     done
 }
 
-monitor_logout_events
+
+mitm_script() {
+control_log=~/control_banner_timestamps.log
+light_log=~/light_banner_timestamps.log
+medium_log=~/medium_banner_timestamps.log
+high_log=~/high_banner_timestamps.log
+# Start monitoring
+while true; do
+    new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
+    new_login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
+
+    if [[ $new_login_count -gt $login_count ]]; then
+
+        echo "attacker inside, tracking time"
+        # Record the start time
+        start_time=$(date +"%Y-%m-%d %H:%M:%S")
+        
+        # Identify the banner type by checking the .bashrc file - we should add a comment when we edit the banner file with the type of 
+        # banner it is so this grepping is easier. or just grep a specific part of each banner, either way works
+        if [ $(echo $banner_message | grep -c "great") -gt 0]; then
+            time_log=$control_log
+        elif [ $(echo $banner_message | grep -c "Welcome") -gt 0]; then
+            time_log=$light_log
+        elif [ $(echo $banner_message | grep -c "continuously") -gt 0]; then
+            time_log=$medium_log
+        elif [ $(echo $banner_message | grep -c "Department") -gt 0]; then
+            time_log=$high_log
+        else
+            echo "Error: Invalid banner message"
+            exit
+        fi
+
+        # Wait for the logout event to log the end time
+        while true; do
+            new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection")
+            if [[ $new_count -gt $log_count ]]; then
+                break
+            fi
+            else 
+              sleep 0.1
+            fi
+        done
+
+        # Record the end time
+        end_time=$(date +"%Y-%m-%d %H:%M:%S")
+
+        # Append session data (start and end times) to the corresponding log file
+        echo "logging timestamps to file"
+        echo "Login: $start_time, Logout: $end_time" >> $time_log
+    fi
+    sleep 0.1
+done
+}
+
+mitm_script &
+
+monitor_logout_events &
