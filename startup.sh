@@ -14,7 +14,12 @@ npm install -g forever
 
 ~/firewall_rules.sh
 
+dos2unix ~/deploy.sh
+dos2unix ~/firewall_rules.sh
+dos2unix ~/recycle.sh
+dos2unix ~/mitm.sh
+
 #call deploy.sh script for each container
-for i in {1..4}; do
+for i in {1..5}; do
     ~/deploy.sh "container$i" "ip$i"
 done
