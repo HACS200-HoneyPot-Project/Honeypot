@@ -10,6 +10,7 @@ fi
 container_name="$1"
 external_ip="$2"
 count=0
+port=65000
 # port=$(shuf -i 50000-65000 -n 1)
 port1=$(shuf -i 50000-53000 -n 1)
 port2=$(shuf -i 53001-56000 -n 1)
@@ -57,6 +58,27 @@ fi
 echo "Successfully retrieved Container IP: $container_ip"
 # File containing banner messages
 banner_file="banners.txt"
+banner_message=$(shuf -n 1 "$banner_file")
+banner=""
+log_file=""
+if [ $(echo $banner_message | grep -c "great") -gt 0 ]; then
+  banner="control"
+  log_file=~/MITM_Logs/control_log/"$container_name.log"
+elif [ $(echo $banner_message | grep -c "Welcome") -gt 0 ]; then
+  banner="light"
+  log_file=~/MITM_Logs/light_log/"$container_name.log"
+elif [ $(echo $banner_message | grep -c "continuously") -gt 0 ]; then
+  banner="medium"
+  log_file=~/MITM_Logs/medium_log/"$container_name.log"
+elif [ $(echo $banner_message | grep -c "Department") -gt 0 ]; then
+  banner="high"
+  log_file=~/MITM_Logs/high_log/"$container_name.log"
+else
+  echo "Error: Invalid banner message"
+  exit
+fi
+
+chmod u+x $log_file
 
 # SETUP SSH IN THE CONTAINER
 sudo lxc-attach -n "$container_name" -- bash -c "
@@ -80,15 +102,20 @@ sudo ls -l ~/MITM/mitm.js
 # MITM COMMAND (FOREVER) TO RUN IN BACKGROUND
 # MAKE PORT UNIQUE GENERATED BASED OFF EXTERNAL
 if [[ $container_name == "container1" ]]; then
-  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port1" --auto-access --auto-access-fixed 1 --debug
+  sudo forever -a -l "$log_file" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port1" --auto-access --auto-access-fixed 1 --debug
+  port="$port1"
 elif [[ $container_name == "container2" ]]; then
-  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port2" --auto-access --auto-access-fixed 1 --debug
+  sudo forever -a -l "$log_file" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port2" --auto-access --auto-access-fixed 1 --debug
+  port="$port2"
 elif [[ $container_name == "container3" ]]; then
-  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port3" --auto-access --auto-access-fixed 1 --debug
+  sudo forever -a -l "$log_file" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port3" --auto-access --auto-access-fixed 1 --debug
+  port="$port3"
 elif [[ $container_name == "container4" ]]; then
-  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port4" --auto-access --auto-access-fixed 1 --debug
+  sudo forever -a -l "$log_file" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port4" --auto-access --auto-access-fixed 1 --debug
+  port="$port4"
 else
-  sudo forever -a -l ~/MITM_Logs/"${container_name}_log" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port5" --auto-access --auto-access-fixed 1 --debug
+  sudo forever -a -l "$log_file" start ~/MITM/mitm.js -n "$container_name" -i "$container_ip" -p "$port5" --auto-access --auto-access-fixed 1 --debug
+  port="$port5"
 fi
 
 sleep 5
@@ -98,17 +125,7 @@ sudo ip addr add "$external_ip"/16 brd + dev eth0
 sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination "$external_ip" --jump DNAT --to-destination "$container_ip"
 sudo iptables --table nat --insert POSTROUTING --source "$container_ip" --destination 0.0.0.0/0 --jump SNAT --to-source "$external_ip"
 
-if [[ $container_name == "container1" ]]; then
-  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port1"
-elif [[ $container_name == "container2" ]]; then
-  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port2"
-elif [[ $container_name == "container3" ]]; then
-  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port3"
-elif [[ $container_name == "container4" ]]; then
-  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port4"
-else
-  sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port5"
-fi
+sudo iptables --table nat --insert PREROUTING --source 0.0.0.0/0 --destination $external_ip --protocol tcp --dport 22 --jump DNAT --to-destination 127.0.0.1:"$port"
 
 # Put the banner in the container
 sudo lxc-attach -n "$container_name" -- bash -c "
@@ -134,15 +151,15 @@ sudo lxc file push ~/honey.csv "$container_name"/home/student_data/
 sudo lxc-attach -n "$container_name" -- bash -c "chown root:root ~/student_data/records && chmod 777 ~/student_data/records"
 
 # Randomize the banner message
-banner_message=$(shuf -n 1 "$banner_file")
+# banner_message=$(shuf -n 1 "$banner_file")
 
 # Insert the banner into the container's /etc/motd
 echo "$banner_message" | sudo tee /var/lib/lxc/"$container_name"/rootfs/etc/motd > /dev/null
 
 sudo lxc-attach -n "$container_name" -- bash -c "echo '$banner_message' > /etc/motd"
 
-log_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check number of logout events
-login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check number of login events
+log_count=$(sudo cat "$log_file" | grep -c "Attacker closed connection") # Check number of logout events
+login_count=$(sudo cat "$log_file" | grep -c "Attacker authenticated and is inside container") # Check number of login events
 
 kick=false
 
@@ -153,22 +170,22 @@ attacker_inside=false
 
 monitor_logout_events() {
     while true; do
-        new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
-        new_login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
+        new_count=$(sudo cat "$log_file" | grep -c "Attacker closed connection") # Check for the logout keyword
+        new_login_count=$(sudo cat "$log_file" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
 
         if [[ $new_count -gt $log_count ]] || $kick; then
             # ps aux
             attacker_left=true
             echo "Detected logout event. Executing recycle script."
 
-            sudo iptables --delete INPUT --source 0.0.0.0/0 --destination "$container_ip" --protocol tcp --dport 22 --jump DROP
-            sudo iptables --delete INPUT --source "$attacker_ip" --destination "$container_ip" --protocol tcp --dport 22 --jump ACCEPT
+            sudo iptables --delete INPUT --destination 10.0.3.1 --protocol tcp --dport "$port" --jump DROP
+            sudo iptables --delete INPUT --source "$attacker_ip" --destination 10.0.3.1 --protocol tcp --dport "$port" --jump ACCEPT
 
             # Get the correct forever ID for the process associated with the container
-            FOREVER_ID=$(sudo forever list | grep "${container_name}_log" | awk '{print $2}' | cut -c 2)
+            FOREVER_ID=$(sudo forever list | grep "${banner}_log" | awk '{print $2}' | cut -c 2)
             echo "Forever ID: $FOREVER_ID"
             echo "Forever List: $(sudo forever list)"
-            echo "Forever List/Container: $(sudo forever list | grep "${container_name}_log")"
+            echo "Forever List/Container: $(sudo forever list | grep "${banner}_log")"
 
             # Stop the process using the forever ID
             if [[ ! -z "$FOREVER_ID" ]]; then
@@ -183,23 +200,16 @@ monitor_logout_events() {
             break
          elif [[ $new_login_count -gt $login_count ]]; then # if an attacker is inside the container
             attacker_inside=true
-            attacker_username=$(sudo grep 'Accepted' /var/log/auth.log | grep "$attacker_ip" | awk '{print $9}' | tail -n 1)
-    
-            if [[ -n "$attacker_username" ]]; then
-              # Disable attacker's password
-              sudo passwd -l "$attacker_username"
-            fi
-            #echo "student":"phishnchips" | sudo chpasswd
             # ensure other attackers cannot connect
-            sudo iptables --check INPUT --source 0.0.0.0/0 --destination $container_ip --protocol tcp --dport 22 --jump DROP
+            sudo iptables --check INPUT --destination 10.0.3.1 --protocol tcp --dport "$port" --jump DROP
             if [[ $? -eq 1 ]]; then
-              attacker_ip=$(sudo cat ~/MITM_Logs/"${container_name}"_log | grep "Attacker connected:" | awk 'END{print}' | cut -d " " -f 8)
-              sudo iptables --insert INPUT --source 0.0.0.0/0 --destination "$container_ip" --protocol tcp --dport 22 --jump DROP
-              sudo iptables --insert INPUT --source "$attacker_ip" --destination "$container_ip" --protocol tcp --dport 22 --jump ACCEPT
+              attacker_ip=$(sudo cat "$log_file" | grep "Attacker connected:" | awk 'END{print}' | cut -d " " -f 8)
+              sudo iptables --insert INPUT --source "$attacker_ip" --destination 10.0.3.1 --protocol tcp --dport "$port" --jump ACCEPT
+              sudo iptables --insert INPUT --destination 10.0.3.1 --protocol tcp --dport "$port" --jump DROP
             fi
 
             # check if inactive
-            last_update_time=$(sudo tail -n 1 ~/MITM_Logs/"${container_name}_log" | cut -d " " -f -2)
+            last_update_time=$(sudo tail -n 1 "$log_file" | cut -d " " -f -2)
             last_update_ms=$(date -d "$last_update_time" +'%s%3N')
             time_since=$(( $(date +'%s%3N') - "$last_update_ms" ))
             if [[ $time_since -gt 180000 ]]; then # if longer than 3 mins, kill the processes
@@ -209,7 +219,7 @@ monitor_logout_events() {
             echo "last command: $time_since ms ago"
 
             # check total time in container
-            login_time=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep "Attacker authenticated and is inside container" | awk 'END{print}' | cut -d " " -f -2)
+            login_time=$(sudo cat "$log_file" | grep "Attacker authenticated and is inside container" | awk 'END{print}' | cut -d " " -f -2)
             login_ms=$(date -d "$login_time" +'%s%3N')
             time_since=$(( $(date +'%s%3N') - "$login_ms"))
             if [[ $time_since -gt 900000 ]]; then
@@ -231,8 +241,8 @@ medium_log=~/medium_banner_timestamps.log
 high_log=~/high_banner_timestamps.log
 # Start monitoring
 while true; do
-    new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection") # Check for the logout keyword
-    new_login_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
+    new_count=$(sudo cat "$log_file" | grep -c "Attacker closed connection") # Check for the logout keyword
+    new_login_count=$(sudo cat "$log_file" | grep -c "Attacker authenticated and is inside container") # Check for login keyword
 
     if [[ $new_login_count -gt $login_count ]]; then
 
@@ -242,13 +252,13 @@ while true; do
         
         # Identify the banner type by checking the .bashrc file - we should add a comment when we edit the banner file with the type of 
         # banner it is so this grepping is easier. or just grep a specific part of each banner, either way works
-        if [ $(echo $banner_message | grep -c "great") -gt 0]; then
+        if [ $(echo $banner_message | grep -c "great") -gt 0 ]; then
             time_log=$control_log
-        elif [ $(echo $banner_message | grep -c "Welcome") -gt 0]; then
+        elif [ $(echo $banner_message | grep -c "Welcome") -gt 0 ]; then
             time_log=$light_log
-        elif [ $(echo $banner_message | grep -c "continuously") -gt 0]; then
+        elif [ $(echo $banner_message | grep -c "continuously") -gt 0 ]; then
             time_log=$medium_log
-        elif [ $(echo $banner_message | grep -c "Department") -gt 0]; then
+        elif [ $(echo $banner_message | grep -c "Department") -gt 0 ]; then
             time_log=$high_log
         else
             echo "Error: Invalid banner message"
@@ -257,10 +267,9 @@ while true; do
 
         # Wait for the logout event to log the end time
         while true; do
-            new_count=$(sudo cat ~/MITM_Logs/"${container_name}_log" | grep -c "Attacker closed connection")
+            new_count=$(sudo cat "$log_file" | grep -c "Attacker closed connection")
             if [[ $new_count -gt $log_count ]]; then
                 break
-            fi
             else 
               sleep 0.1
             fi
