@@ -1,0 +1,112 @@
+recycling container container1
+recycling container container3
+recycling container container1
+recycling container container2
+recycling container container1
+redeploying container1
+Starting deploy again
+recycling container container5
+redeploying container5
+Starting deploy again
+recycling container container1
+redeploying container1
+Starting deploy again
+recycling container container5
+redeploying container5
+Starting deploy again
+recycling container container1
+redeploying container1
+recycling container container2
+redeploying container2
+recycling container container3
+redeploying container3
+recycling container container4
+redeploying container4
+Starting deploy again
+Starting deploy again
+Starting deploy again
+Starting deploy again
+recycling container container3
+deleting container3 NAT rules...
+Stopping forever process with ID: 2
+waiting to redeploy container3
+Starting deploy again
+recycling container container5
+deleting container5 NAT rules...
+Stopping forever process with ID: 3
+waiting to redeploy container5
+Starting deploy again
+recycling container container1
+deleting container1 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container1
+recycling container container2
+deleting container2 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container2
+recycling container container3
+deleting container3 NAT rules...
+Stopping forever process with ID: 1
+waiting to redeploy container3
+recycling container container4
+deleting container4 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container4
+Starting deploy again
+Starting deploy again
+Starting deploy again
+Starting deploy again
+recycling container container5
+deleting container5 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container5
+Starting deploy again
+recycling container container3
+deleting container3 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container3
+recycling container container2
+deleting container2 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container2
+recycling container container4
+deleting container4 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container4
+recycling container container1
+deleting container1 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container1
+Starting deploy again
+Starting deploy again
+Starting deploy again
+Starting deploy again
+recycling container container3
+deleting container3 NAT rules...
+Stopping forever process with ID: 2
+waiting to redeploy container3
+Starting deploy again
+recycling container container3
+deleting container3 NAT rules...
+Stopping forever process with ID: 4
+waiting to redeploy container3
+Starting deploy again
+recycling container container2
+deleting container2 NAT rules...
+Stopping forever process with ID: 1
+waiting to redeploy container2
+Starting deploy again
+recycling container container1
+deleting container1 NAT rules...
+Stopping forever process with ID: 0
+waiting to redeploy container1
+recycling container container3
+deleting container3 NAT rules...
+Stopping forever process with ID: 2
+waiting to redeploy container3
+Starting deploy again
+recycling container container5
+deleting container5 NAT rules...
+Stopping forever process with ID: 4
+waiting to redeploy container5
+Starting deploy again
