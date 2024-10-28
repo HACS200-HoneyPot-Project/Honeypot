@@ -1,0 +1,107 @@
+(node:4206) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container1',
+  containerIp: '10.0.3.190',
+  mitmPort: 52249,
+  autoAccessFixed: 1
+}
+2024-10-24 16:18:08.538 - [Info] MITM Version: 2
+2024-10-24 16:18:08.540 - [Info] Auto Access Enabled: true
+2024-10-24 16:18:08.540 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 16:18:08.549 - [Info] SSH man-in-the-middle server for 10.0.3.190 listening on 10.0.3.1:52249
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:1125491) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container1',
+  containerIp: '10.0.3.155',
+  mitmPort: 52926,
+  autoAccessFixed: 1
+}
+2024-10-24 16:57:43.981 - [Info] MITM Version: 2
+2024-10-24 16:57:43.983 - [Info] Auto Access Enabled: true
+2024-10-24 16:57:43.983 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 16:57:44.011 - [Info] SSH man-in-the-middle server for 10.0.3.155 listening on 10.0.3.1:52926
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:1080450) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container1',
+  containerIp: '10.0.3.148',
+  mitmPort: 52029,
+  autoAccessFixed: 1
+}
+2024-10-24 18:10:38.517 - [Info] MITM Version: 2
+2024-10-24 18:10:38.519 - [Info] Auto Access Enabled: true
+2024-10-24 18:10:38.519 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 18:10:38.527 - [Info] SSH man-in-the-middle server for 10.0.3.148 listening on 10.0.3.1:52029
+2024-10-24 22:15:26.146 - [Debug] [Connection] Attacker connected: 10.172.114.249 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-24 22:15:27.387 - [Debug] [Auth] Attacker 10.172.114.249 trying to authenticate with 'none'
+2024-10-24 22:15:27.388 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-24 22:15:29.388 - [Debug] [Auth] Attacker 10.172.114.249 trying to authenticate with 'password'
+2024-10-24 22:15:29.389 - [Debug] [Auto Access] Attacker: 10.172.114.249, Threshold: 1, Attempts: 1
+2024-10-24 22:15:29.389 - [Debug] [Auto Access] Compromising the honeypot
+2024-10-24 22:15:29.390 - [Debug] [Auto Access] Adding the following credentials: 'alexs:qwer'
+2024-10-24 22:15:29.614 - [Debug] [Auto Access] Auto-access is now disabled for the remainder of this MITM server instance
+2024-10-24 22:15:29.616 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-24 22:15:29.616 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.148
+2024-10-24 22:15:29.711 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-24 22:15:29.872 - [Debug] [SHELL] Opened shell for attacker
+2024-10-24 22:15:29.874 - [Debug] [LXC Streams] New Stream | Total Streams: 1
+2024-10-24 22:15:31.180 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-24 22:15:31.323 - [Debug] [SHELL] Attacker Keystroke: x
+2024-10-24 22:15:31.496 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-24 22:15:31.537 - [Debug] [SHELL] Attacker Keystroke: t
+2024-10-24 22:15:31.690 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 22:15:31.695 - [Debug] [SHELL] line from reader: exit
+2024-10-24 22:15:31.695 - [Debug] [SHELL] Keystroke buffer: 101,120,105,116,13
+2024-10-24 22:15:31.701 - [Debug] [LXC Streams] Removed Stream | Total streams: 0
+2024-10-24 22:15:31.702 - [Debug] [SHELL] Honeypot ended shell
+2024-10-24 22:15:31.773 - [Debug] [SHELL] Attacker ended the shell
+2024-10-24 22:15:31.775 - [Debug] [Connection] Attacker closed connection
+2024-10-24 22:15:31.783 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-24 22:15:31.783 - [Debug] [LXC] Container's OpenSSH server closed connection
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}

@@ -1,0 +1,159 @@
+(node:295917) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.226',
+  mitmPort: 57859,
+  autoAccessFixed: 1
+}
+2024-10-24 16:02:03.828 - [Info] MITM Version: 2
+2024-10-24 16:02:03.830 - [Info] Auto Access Enabled: true
+2024-10-24 16:02:03.830 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 16:02:03.841 - [Info] SSH man-in-the-middle server for 10.0.3.226 listening on 10.0.3.1:57859
+2024-10-24 16:02:36.990 - [Debug] [Connection] Attacker connected: 10.175.1.188 | Client Identification: SSH-2.0-OpenSSH_9.8
+2024-10-24 16:02:38.452 - [Debug] [Auth] Attacker 10.175.1.188 trying to authenticate with 'none'
+2024-10-24 16:02:38.453 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-24 16:02:38.478 - [Debug] [Auth] Attacker 10.175.1.188 trying to authenticate with 'publickey'
+2024-10-24 16:02:38.479 - [Debug] [Auth] Attacker authentication error: Publickey authentication failed
+2024-10-24 16:02:38.480 - [Debug] [Auth] Attacker: 10.175.1.188 has so far made 1 attempts. Remaining: 5 attempts
+2024-10-24 16:02:40.507 - [Debug] [Auth] Attacker 10.175.1.188 trying to authenticate with 'password'
+2024-10-24 16:02:40.507 - [Debug] [Auto Access] Attacker: 10.175.1.188, Threshold: 1, Attempts: 1
+2024-10-24 16:02:40.508 - [Debug] [Auto Access] Compromising the honeypot
+2024-10-24 16:02:40.508 - [Debug] [Auto Access] Adding the following credentials: 'devpatel:yes'
+2024-10-24 16:02:40.756 - [Debug] [Auto Access] Auto-access is now disabled for the remainder of this MITM server instance
+2024-10-24 16:02:40.759 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-24 16:02:40.760 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.226
+2024-10-24 16:02:40.879 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-24 16:02:41.035 - [Debug] [SHELL] Opened shell for attacker
+2024-10-24 16:02:41.037 - [Debug] [LXC Streams] New Stream | Total Streams: 1
+2024-10-24 16:02:42.585 - [Debug] [SHELL] Attacker Keystroke: h
+2024-10-24 16:02:42.607 - [Debug] [SHELL] Attacker Keystroke: a
+2024-10-24 16:02:42.674 - [Debug] [SHELL] Attacker Keystroke: b
+2024-10-24 16:02:42.675 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-24 16:02:42.790 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:42.791 - [Debug] [SHELL] Attacker Keystroke: h
+2024-10-24 16:02:42.932 - [Debug] [SHELL] Attacker Keystroke: q
+2024-10-24 16:02:42.954 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-24 16:02:43.039 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:43.061 - [Debug] [SHELL] Attacker Keystroke: g
+2024-10-24 16:02:43.150 - [Debug] [SHELL] Attacker Keystroke: q
+2024-10-24 16:02:43.151 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-24 16:02:43.173 - [Debug] [SHELL] Attacker Keystroke: u
+2024-10-24 16:02:43.295 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:43.366 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-24 16:02:43.373 - [Debug] [SHELL] Attacker Keystroke: u
+2024-10-24 16:02:43.407 - [Debug] [SHELL] Attacker Keystroke: q
+2024-10-24 16:02:43.451 - [Debug] [SHELL] Attacker Keystroke: g
+2024-10-24 16:02:43.496 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:43.537 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-24 16:02:43.561 - [Debug] [SHELL] Attacker Keystroke: u
+2024-10-24 16:02:43.629 - [Debug] [SHELL] Attacker Keystroke: q
+2024-10-24 16:02:43.649 - [Debug] [SHELL] Attacker Keystroke: g
+2024-10-24 16:02:43.722 - [Debug] [SHELL] Attacker Keystroke: w
+2024-10-24 16:02:43.766 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:43.928 - [Debug] [SHELL] Attacker Keystroke: q
+2024-10-24 16:02:43.996 - [Debug] [SHELL] Attacker Keystroke: w
+2024-10-24 16:02:44.041 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:44.155 - [Debug] [SHELL] Attacker Keystroke: q
+2024-10-24 16:02:44.268 - [Debug] [SHELL] Attacker Keystroke: w
+2024-10-24 16:02:44.288 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:44.483 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 16:02:44.485 - [Debug] [SHELL] line from reader: habsdhqidgqiudiuqgdiuqgwdqwdqwd
+2024-10-24 16:02:44.486 - [Debug] [SHELL] Keystroke buffer: 104,97,98,115,100,104,113,105,100,103,113,105,117,100,105,117,113,103,100,105,117,113,103,119,100,113,119,100,113,119,100,13
+2024-10-24 16:02:46.130 - [Debug] [SHELL] Attacker Keystroke: l
+2024-10-24 16:02:46.214 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-24 16:02:46.308 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-24 16:02:46.469 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 16:02:46.471 - [Debug] [SHELL] line from reader: ls 
+2024-10-24 16:02:46.471 - [Debug] [SHELL] Keystroke buffer: 108,115,32,13
+2024-10-24 16:02:47.746 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-24 16:02:47.936 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:48.225 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-24 16:02:48.357 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-24 16:02:48.481 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-24 16:02:48.614 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-24 16:02:48.905 - [Debug] [SHELL] Attacker Keystroke: a
+2024-10-24 16:02:48.964 - [Debug] [SHELL] Attacker Keystroke: t
+2024-10-24 16:02:49.054 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-24 16:02:49.815 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-24 16:02:49.955 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-24 16:02:50.198 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-24 16:02:50.310 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-24 16:02:50.399 - [Debug] [SHELL] Attacker Keystroke: r
+2024-10-24 16:02:50.593 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-24 16:02:50.781 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-24 16:02:50.876 - [Debug] [SHELL] Attacker Keystroke: o
+2024-10-24 16:02:51.418 - [Debug] [SHELL] Attacker Keystroke: r
+2024-10-24 16:02:51.615 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-24 16:02:51.848 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-24 16:02:52.018 - [Debug] [SHELL] Attacker Keystroke: .
+2024-10-24 16:02:52.698 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-24 16:02:52.798 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-24 16:02:52.957 - [Debug] [SHELL] Attacker Keystroke: v
+2024-10-24 16:02:53.247 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 16:02:53.252 - [Debug] [SHELL] line from reader: cat records.csv
+2024-10-24 16:02:53.253 - [Debug] [SHELL] Keystroke buffer: 99,100,127,127,127,99,97,116,32,101,101,127,127,114,101,99,111,114,100,115,46,99,115,118,13
+2024-10-24 16:02:55.212 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-24 16:02:55.420 - [Debug] [SHELL] Attacker Keystroke: l
+2024-10-24 16:02:55.496 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-24 16:02:55.703 - [Debug] [SHELL] Attacker Keystroke: a
+2024-10-24 16:02:55.943 - [Debug] [SHELL] Attacker Keystroke: r
+2024-10-24 16:02:56.003 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 16:02:56.010 - [Debug] [SHELL] line from reader: clear
+2024-10-24 16:02:56.011 - [Debug] [SHELL] Keystroke buffer: 99,108,101,97,114,13
+2024-10-24 16:02:59.595 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-24 16:02:59.803 - [Debug] [SHELL] Attacker Keystroke: x
+2024-10-24 16:02:59.843 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-24 16:03:00.003 - [Debug] [SHELL] Attacker Keystroke: t
+2024-10-24 16:03:00.047 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-24 16:03:00.518 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 16:03:00.519 - [Debug] [SHELL] line from reader: exit 
+2024-10-24 16:03:00.519 - [Debug] [SHELL] Keystroke buffer: 101,120,105,116,32,13
+2024-10-24 16:03:00.527 - [Debug] [LXC Streams] Removed Stream | Total streams: 0
+2024-10-24 16:03:00.527 - [Debug] [SHELL] Honeypot ended shell
+2024-10-24 16:03:00.545 - [Debug] [SHELL] Attacker ended the shell
+2024-10-24 16:03:00.555 - [Debug] [Connection] Attacker closed connection
+2024-10-24 16:03:00.588 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-24 16:03:00.589 - [Debug] [LXC] Container's OpenSSH server closed connection
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:1023874) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.118',
+  mitmPort: 56551,
+  autoAccessFixed: 1
+}
+2024-10-24 16:53:59.558 - [Info] MITM Version: 2
+2024-10-24 16:53:59.559 - [Info] Auto Access Enabled: true
+2024-10-24 16:53:59.560 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 16:53:59.578 - [Info] SSH man-in-the-middle server for 10.0.3.118 listening on 10.0.3.1:56551
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}

@@ -1,0 +1,111 @@
+(node:22210) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.187',
+  mitmPort: 56040,
+  autoAccessFixed: 1
+}
+2024-10-24 16:19:49.611 - [Info] MITM Version: 2
+2024-10-24 16:19:49.614 - [Info] Auto Access Enabled: true
+2024-10-24 16:19:49.614 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 16:19:49.623 - [Info] SSH man-in-the-middle server for 10.0.3.187 listening on 10.0.3.1:56040
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:27687) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.25',
+  mitmPort: 58266,
+  autoAccessFixed: 1
+}
+2024-10-24 17:15:36.265 - [Info] MITM Version: 2
+2024-10-24 17:15:36.267 - [Info] Auto Access Enabled: true
+2024-10-24 17:15:36.269 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 17:15:36.277 - [Info] SSH man-in-the-middle server for 10.0.3.25 listening on 10.0.3.1:58266
+2024-10-24 17:16:03.839 - [Debug] [Connection] Attacker connected: 10.175.73.149 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-24 17:16:05.328 - [Debug] [Auth] Attacker 10.175.73.149 trying to authenticate with 'none'
+2024-10-24 17:16:05.328 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-24 17:16:06.470 - [Debug] [Auth] Attacker 10.175.73.149 trying to authenticate with 'password'
+2024-10-24 17:16:06.471 - [Debug] [Auto Access] Attacker: 10.175.73.149, Threshold: 1, Attempts: 1
+2024-10-24 17:16:06.471 - [Debug] [Auto Access] Compromising the honeypot
+2024-10-24 17:16:06.471 - [Debug] [Auto Access] Adding the following credentials: 'alexs:ctfgvybhjunk'
+2024-10-24 17:16:06.936 - [Debug] [Auto Access] Auto-access is now disabled for the remainder of this MITM server instance
+2024-10-24 17:16:06.938 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-24 17:16:06.938 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.25
+2024-10-24 17:16:06.999 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-24 17:16:07.142 - [Debug] [SHELL] Opened shell for attacker
+2024-10-24 17:16:07.151 - [Debug] [LXC Streams] New Stream | Total Streams: 1
+2024-10-24 17:17:41.703 - [Debug] [SHELL] Attacker Keystroke: l
+2024-10-24 17:17:41.793 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-24 17:17:41.970 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 17:17:41.975 - [Debug] [SHELL] line from reader: ls
+2024-10-24 17:17:41.975 - [Debug] [SHELL] Keystroke buffer: 108,115,13
+2024-10-24 17:18:05.124 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-24 17:18:05.270 - [Debug] [SHELL] Attacker Keystroke: x
+2024-10-24 17:18:05.333 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-24 17:18:05.445 - [Debug] [SHELL] Attacker Keystroke: t
+2024-10-24 17:18:05.524 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-24 17:18:05.526 - [Debug] [SHELL] line from reader: exit
+2024-10-24 17:18:05.526 - [Debug] [SHELL] Keystroke buffer: 101,120,105,116,13
+2024-10-24 17:18:05.529 - [Debug] [LXC Streams] Removed Stream | Total streams: 0
+2024-10-24 17:18:05.530 - [Debug] [SHELL] Honeypot ended shell
+2024-10-24 17:18:05.586 - [Debug] [SHELL] Attacker ended the shell
+2024-10-24 17:18:05.587 - [Debug] [Connection] Attacker closed connection
+2024-10-24 17:18:05.595 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-24 17:18:05.596 - [Debug] [LXC] Container's OpenSSH server closed connection
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:23368) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.116',
+  mitmPort: 57450,
+  autoAccessFixed: 1
+}
+2024-10-28 15:48:26.540 - [Info] MITM Version: 2
+2024-10-28 15:48:26.543 - [Info] Auto Access Enabled: true
+2024-10-28 15:48:26.545 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-28 15:48:26.553 - [Info] SSH man-in-the-middle server for 10.0.3.116 listening on 10.0.3.1:57450

@@ -1,0 +1,225 @@
+(node:18519) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.158',
+  mitmPort: 58003,
+  autoAccessFixed: 1
+}
+2024-10-24 16:08:29.001 - [Info] MITM Version: 2
+2024-10-24 16:08:29.003 - [Info] Auto Access Enabled: true
+2024-10-24 16:08:29.003 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 16:08:29.012 - [Info] SSH man-in-the-middle server for 10.0.3.158 listening on 10.0.3.1:58003
+2024-10-24 16:08:37.872 - [Debug] [Connection] Attacker connected: 10.175.1.188 | Client Identification: SSH-2.0-OpenSSH_9.8
+2024-10-24 16:08:37.890 - [Debug] [Connection] Attacker closed the connection
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:60170) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.98',
+  mitmPort: 58962,
+  autoAccessFixed: 1
+}
+2024-10-24 16:11:21.913 - [Info] MITM Version: 2
+2024-10-24 16:11:21.915 - [Info] Auto Access Enabled: true
+2024-10-24 16:11:21.915 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 16:11:21.922 - [Info] SSH man-in-the-middle server for 10.0.3.98 listening on 10.0.3.1:58962
+(node:3182016) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.13',
+  mitmPort: 56341,
+  autoAccessFixed: 1
+}
+2024-10-24 22:16:26.616 - [Info] MITM Version: 2
+2024-10-24 22:16:26.620 - [Info] Auto Access Enabled: true
+2024-10-24 22:16:26.621 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-24 22:16:26.635 - [Info] SSH man-in-the-middle server for 10.0.3.13 listening on 10.0.3.1:56341
+2024-10-25 00:52:11.056 - [Debug] [Connection] Attacker connected: 10.172.114.249 | Client Identification: SSH-2.0-OpenSSH_for_Windows_9.5
+2024-10-25 00:52:12.243 - [Debug] [Auth] Attacker 10.172.114.249 trying to authenticate with 'none'
+2024-10-25 00:52:12.243 - [Debug] [Auth] Attacker authentication error: No authentication method provided
+2024-10-25 00:52:13.890 - [Debug] [Auth] Attacker 10.172.114.249 trying to authenticate with 'password'
+2024-10-25 00:52:13.891 - [Debug] [Auto Access] Attacker: 10.172.114.249, Threshold: 1, Attempts: 1
+2024-10-25 00:52:13.891 - [Debug] [Auto Access] Compromising the honeypot
+2024-10-25 00:52:13.891 - [Debug] [Auto Access] Adding the following credentials: 'alexs:ASDF'
+2024-10-25 00:52:14.359 - [Debug] [Auto Access] Auto-access is now disabled for the remainder of this MITM server instance
+2024-10-25 00:52:14.361 - [Debug] [Auth] Valid credentials - Password Authentication
+2024-10-25 00:52:14.361 - [Debug] [LXC] Attempting to connect to the honeypot: 10.0.3.13
+2024-10-25 00:52:14.475 - [Debug] [LXC-Auth] Attacker authenticated and is inside container
+2024-10-25 00:52:14.628 - [Debug] [SHELL] Opened shell for attacker
+2024-10-25 00:52:14.630 - [Debug] [LXC Streams] New Stream | Total Streams: 1
+2024-10-25 00:52:16.752 - [Debug] [SHELL] Attacker Keystroke: E
+2024-10-25 00:52:16.771 - [Debug] [SHELL] Attacker Keystroke: C
+2024-10-25 00:52:16.890 - [Debug] [SHELL] Attacker Keystroke: H
+2024-10-25 00:52:16.944 - [Debug] [SHELL] Attacker Keystroke: O
+2024-10-25 00:52:17.078 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:17.565 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-25 00:52:17.741 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-25 00:52:17.876 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-25 00:52:18.017 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-25 00:52:18.153 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-25 00:52:18.352 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-25 00:52:18.491 - [Debug] [SHELL] Attacker Keystroke: [DEL]
+2024-10-25 00:52:18.685 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-25 00:52:18.763 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-25 00:52:18.876 - [Debug] [SHELL] Attacker Keystroke: h
+2024-10-25 00:52:18.979 - [Debug] [SHELL] Attacker Keystroke: o
+2024-10-25 00:52:19.040 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:19.248 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-25 00:52:19.326 - [Debug] [SHELL] Attacker Keystroke: d
+2024-10-25 00:52:19.465 - [Debug] [SHELL] Attacker Keystroke: k
+2024-10-25 00:52:19.715 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:19.900 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-25 00:52:19.987 - [Debug] [SHELL] Attacker Keystroke: f
+2024-10-25 00:52:20.251 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:20.328 - [Debug] [SHELL] Attacker Keystroke: t
+2024-10-25 00:52:20.414 - [Debug] [SHELL] Attacker Keystroke: h
+2024-10-25 00:52:20.560 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-25 00:52:20.651 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-25 00:52:20.771 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-25 00:52:20.829 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:21.134 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-25 00:52:21.231 - [Debug] [SHELL] Attacker Keystroke: p
+2024-10-25 00:52:21.324 - [Debug] [SHELL] Attacker Keystroke: s
+2024-10-25 00:52:21.427 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:21.579 - [Debug] [SHELL] Attacker Keystroke: a
+2024-10-25 00:52:21.639 - [Debug] [SHELL] Attacker Keystroke: r
+2024-10-25 00:52:21.723 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-25 00:52:21.777 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:21.940 - [Debug] [SHELL] Attacker Keystroke: p
+2024-10-25 00:52:22.062 - [Debug] [SHELL] Attacker Keystroke: u
+2024-10-25 00:52:22.166 - [Debug] [SHELL] Attacker Keystroke: b
+2024-10-25 00:52:22.328 - [Debug] [SHELL] Attacker Keystroke: l
+2024-10-25 00:52:22.427 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-25 00:52:22.482 - [Debug] [SHELL] Attacker Keystroke: c
+2024-10-25 00:52:22.574 - [Debug] [SHELL] Attacker Keystroke: [Space]
+2024-10-25 00:52:22.765 - [Debug] [SHELL] Attacker Keystroke: n
+2024-10-25 00:52:22.912 - [Debug] [SHELL] Attacker Keystroke: g
+2024-10-25 00:52:22.997 - [Debug] [SHELL] Attacker Keystroke: l
+2024-10-25 00:52:23.287 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-25 00:52:23.308 - [Debug] [SHELL] line from reader: echo idk if these ips are public ngl
+2024-10-25 00:52:23.309 - [Debug] [SHELL] Keystroke buffer: 69,67,72,79,32,127,127,127,127,127,101,127,101,99,104,111,32,105,100,107,32,105,102,32,116,104,101,115,101,32,105,112,115,32,97,114,101,32,112,117,98,108,105,99,32,110,103,108,13
+2024-10-25 00:52:24.916 - [Debug] [SHELL] Attacker Keystroke: e
+2024-10-25 00:52:25.087 - [Debug] [SHELL] Attacker Keystroke: x
+2024-10-25 00:52:25.140 - [Debug] [SHELL] Attacker Keystroke: i
+2024-10-25 00:52:25.285 - [Debug] [SHELL] Attacker Keystroke: t
+2024-10-25 00:52:25.422 - [Debug] [SHELL] Attacker Keystroke: [CR]
+2024-10-25 00:52:25.422 - [Debug] [SHELL] line from reader: exit
+2024-10-25 00:52:25.423 - [Debug] [SHELL] Keystroke buffer: 101,120,105,116,13
+2024-10-25 00:52:25.428 - [Debug] [LXC Streams] Removed Stream | Total streams: 0
+2024-10-25 00:52:25.429 - [Debug] [SHELL] Honeypot ended shell
+2024-10-25 00:52:25.482 - [Debug] [SHELL] Attacker ended the shell
+2024-10-25 00:52:25.488 - [Debug] [Connection] Attacker closed connection
+2024-10-25 00:52:25.513 - [Debug] [LXC] Container's OpenSSH server ended connection
+2024-10-25 00:52:25.514 - [Debug] [LXC] Container's OpenSSH server closed connection
+{"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:3762936) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.245',
+  mitmPort: 58067,
+  autoAccessFixed: 1
+}
+2024-10-25 00:54:38.598 - [Info] MITM Version: 2
+2024-10-25 00:54:38.604 - [Info] Auto Access Enabled: true
+2024-10-25 00:54:38.606 - [Debug] [Init] Auto Access Theshold Achieved: false
+2024-10-25 00:54:38.623 - [Info] SSH man-in-the-middle server for 10.0.3.245 listening on 10.0.3.1:58067
+(node:19507) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container3',
+  containerIp: '10.0.3.173',
+  mitmPort: 57847,
+  autoAccessFixed: 1
+}
+Error: ENOENT: no such file or directory, open '/var/lib/lxc/container3/rootfs/etc/ssh/ssh_host_ecdsa_key'
+    at Object.openSync (fs.js:498:3)
+    at Object.readFileSync (fs.js:394:35)
+    at readKeys (/home/student/MITM/server/keys.js:19:18)
+    at readCTKeys (/home/student/MITM/server/keys.js:29:15)
+    at Object.loadKeys (/home/student/MITM/server/keys.js:48:12)
+    at Object.<anonymous> (/home/student/MITM/server/index.js:160:29)
+    at Module._compile (internal/modules/cjs/loader.js:1085:14)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:790:12) {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/var/lib/lxc/container3/rootfs/etc/ssh/ssh_host_ecdsa_key'
+}
+[ERROR] Could not read the keys from the container! Is the container mounted/running and is openssh-server installed?
+{"level":"error","message":"Forever detected script exited with code: 1"}
