@@ -207,3 +207,43 @@ Started with the following options:
 2024-10-25 02:33:03.031 - [Debug] [LXC] Container's OpenSSH server ended connection
 2024-10-25 02:33:03.078 - [Debug] [LXC] Container's OpenSSH server closed connection
 {"level":"error","message":"Forever detected script was killed by signal: SIGKILL"}
+(node:68720) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Started with the following options:
+{
+  debug: true,
+  mitmIp: '10.0.3.1',
+  autoAccess: true,
+  autoAccessCache: 5000,
+  maxAttemptsPerConnection: 6,
+  sshServerIdentifier: 'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2',
+  containerMountPathPrefix: '/var/lib/lxc',
+  containerMountPathSuffix: 'rootfs/',
+  loggingAttackerStreams: '/home/student/MITM/logs/session_streams',
+  loggingAuthenticationAttempts: '/home/student/MITM/logs/authentication_attempts',
+  loggingLogins: '/home/student/MITM/logs/logins',
+  loggingLogouts: '/home/student/MITM/logs/logouts',
+  loggingKeystrokes: '/home/student/MITM/logs/keystrokes',
+  containerName: 'container1',
+  containerIp: '10.0.3.22',
+  mitmPort: 52769,
+  autoAccessFixed: 1
+}
+Error: ENOENT: no such file or directory, open '/var/lib/lxc/container1/rootfs/etc/ssh/ssh_host_ecdsa_key'
+    at Object.openSync (fs.js:498:3)
+    at Object.readFileSync (fs.js:394:35)
+    at readKeys (/home/student/MITM/server/keys.js:19:18)
+    at readCTKeys (/home/student/MITM/server/keys.js:29:15)
+    at Object.loadKeys (/home/student/MITM/server/keys.js:48:12)
+    at Object.<anonymous> (/home/student/MITM/server/index.js:160:29)
+    at Module._compile (internal/modules/cjs/loader.js:1085:14)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:790:12) {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/var/lib/lxc/container1/rootfs/etc/ssh/ssh_host_ecdsa_key'
+}
+[ERROR] Could not read the keys from the container! Is the container mounted/running and is openssh-server installed?
+{"level":"error","message":"Forever detected script exited with code: 1"}
